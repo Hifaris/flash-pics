@@ -4,10 +4,11 @@ import Header from './Header'
 import Categories from './Category'
 
 
+
+
 function Main_Home() {
   return (
     <div>
-        <Navbar/>
         <Header/>
         <Categories/>
     </div>

@@ -1,21 +1,42 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Navbar = () => {
+  const navigate = useNavigate()
+  const hdlRegister = ()=>{
+    navigate("/register")
+}
+  const hdlLogin= ()=>{
+    navigate("/login")
+}
+const hdlHome = ()=>{
+  navigate("/")
+}
+
+
   return (
     <header className="flex justify-between items-center p-4 bg-white shadow-md">
-      <div className="text-2xl font-bold text-blue-500">Flash Pics</div>
+     <div className="text-4xl font-bold text-sky-600 cursor-pointer" onClick={hdlHome}>
+      Flash <span className="text-orange-600">Pics</span>
+     </div>
       <nav className="space-x-6">
-        <a href="#" className="text-gray-700">Home</a>
-        <a href="#" className="text-gray-700">Photos</a>
-        <a href="#" className="text-gray-700">Videos</a>
-        <a href="#" className="text-gray-700">Illustrations</a>
-        <a href="#" className="text-gray-700">Collection</a>
+        <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Home</a>
+        <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Photos</a>
+        <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Illustrations</a>
+        <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Collection</a>
       </nav>
       <div className="space-x-4">
-        <button className="text-gray-700">Sign In</button>
-        <button className="bg-yellow-500 text-white px-4 py-2 rounded">Register</button>
+      <button className="text-sky-900 border border-sky-900 rounded-lg px-4 py-2 hover:bg-sky-900 hover:text-white transition" onClick={hdlLogin}>
+          Login
+        </button>
+     
+        <button className="text-white bg-orange-500 rounded-lg px-4 py-2 hover:bg-orange-600 transition" onClick={hdlRegister}>
+            Register
+          </button>
       </div>
     </header>
+ 
   );
 };
 

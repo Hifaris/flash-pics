@@ -1,4 +1,5 @@
 import Main_Home from "./component/Main_Home"
+import AppRoute from "./route/AppRoute"
 
 
 
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <div>
-      <Main_Home/>
+      <AppRoute/>
     </div>
   )
 }
