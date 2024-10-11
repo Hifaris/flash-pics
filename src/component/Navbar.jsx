@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 
 const Navbar = () => {
+  
   const navigate = useNavigate()
+
   const hdlRegister = ()=>{
     navigate("/register")
 }
@@ -21,7 +23,7 @@ const hdlHome = ()=>{
       Flash <span className="text-orange-600">Pics</span>
      </div>
       <nav className="space-x-6">
-        <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Home</a>
+        <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold" onClick={hdlHome}>Home</a>
         <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Photos</a>
         <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Illustrations</a>
         <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Collection</a>

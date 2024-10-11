@@ -6,6 +6,8 @@ import Register from '../pages/Register'
 import Login from '../pages/login'
 import MainSearch from '../pages/MainSearch'
 import Test from '../component/Test'
+import { ProtectRoute } from './protectRoute'
+import UserLayout from '../layouts/UserLayout'
 
 
 const router = createBrowserRouter([
@@ -20,6 +22,16 @@ const router = createBrowserRouter([
         {path: 'search', element: <MainSearch/>},
         {path: 'test', element: <Test/>}
     ]
+ },
+
+ {
+  path: "/user",
+  element: <ProtectRoute element={<UserLayout/>} allow={["USER"]}/>,
+  children:[
+    {index:true, element: <Main_Home/>},
+    {path: 'search', element: <MainSearch/>},
+    {path: 'test', element: <Test/>}
+  ]
  }
 
 ])

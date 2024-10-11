@@ -16,12 +16,14 @@ function Register() {
     password: '',
     confirmPassword: ''
   })
+
   console.log(form)
 
   const hdlOnchange = (e) => {
-    console.log(e.target.name, e.target.value)
+    // console.log(e.target.name, e.target.value)
     setForm({...form,[e.target.name]:e.target.value})
   }
+
   const hdlSubmit =(e)=>{
     e.preventDefault()
     actionRegister(form)
@@ -58,7 +60,6 @@ function Register() {
       </div>
     </nav> */}
 
-    {/* Main Content */}
     <div className="w-full max-w-7xl flex justify-between items-center px-8 mt-10">
       
      
@@ -89,7 +90,6 @@ function Register() {
             >
               <Email />
               <input
-               id="username"
                 type="text"
                 placeholder="Username"
                 className="w-full ml-3 text-sm focus:outline-none"

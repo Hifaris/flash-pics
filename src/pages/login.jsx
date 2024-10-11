@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import greenBackground from "../assets/backgroundImage.jpg";
 import { Email } from "../icons";
 import useAuthStore from "../store/auth-store";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  
+  const navigate = useNavigate()
   const actionLogin = useAuthStore((state)=>state.actionLogin)
   const [form, setForm] = useState({
     email: '',
@@ -17,10 +18,18 @@ function Login() {
   const hdlSubmit =async(e)=>{
     e.preventDefault()
     // console.log(form)
-    actionLogin(form)
-   
-
+    const role = await actionLogin(form)
+    roleRedirect(role)
+    console.log(role.role,"role")
+    console.log(form,"form")
+  
   }  
+
+  const roleRedirect =(role)=>{
+    if(role.role === "USER"){
+     navigate("/user")
+    }
+  }
   return (
     <div
       className="min-h-screen bg-cover bg-center flex items-center justify-between"

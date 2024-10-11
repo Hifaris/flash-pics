@@ -16,10 +16,15 @@ const useAuthStore = create(persist((set)=>({
    actionLogin: async(form)=>{
     try {
         const resp = await login(form)
-        console.log(resp)
+        console.log(resp.data.user)
+        set({token: resp.data.token, user: resp.data.user})
+        return resp.data.user
     } catch (err) {
         console.log(err)
     }
+   },
+   actionLogout: async()=>{
+    set({token: '',user: null})
    }
 })))
 
