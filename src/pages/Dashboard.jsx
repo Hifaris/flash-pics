@@ -1,15 +1,12 @@
 import React from 'react'
 import Sidebar from '../admin/Sidebar'
 import Navbar from '../admin/Navbar'
+import AdminSidebar from '../admin/Sidebar'
 
-function Dashboard({children}) {
+function Dashboard() {
   return (
-    <div className="flex h-screen">
-      <Sidebar />
-      <div className="flex-1">
-        <Navbar />
-        <main className="p-6 bg-gray-100 h-full">{children}</main>
-      </div>
+    <div className='flex flex-col p-5 m-5 gap-4 bg-white rounded-sm'>
+      Dashboard
     </div>
   )
 }

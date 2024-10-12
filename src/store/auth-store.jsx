@@ -18,6 +18,7 @@ const useAuthStore = create(persist((set)=>({
         const resp = await login(form)
         console.log(resp.data.user)
         set({token: resp.data.token, user: resp.data.user})
+        console.log(resp)
         return resp.data.user
     } catch (err) {
         console.log(err)

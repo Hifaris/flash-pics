@@ -29,6 +29,10 @@ function Login() {
     if(role.role === "USER"){
      navigate("/user")
     }
+    if(role.role === "ADMIN"){
+      navigate("/admin")
+    }
+    
   }
   return (
     <div
@@ -38,26 +42,7 @@ function Login() {
           "url('https://images.pexels.com/photos/1048033/pexels-photo-1048033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
       }}
     >
-      {/* Navbar */}
-      {/* <nav className="w-full flex justify-between items-center px-8 py-4 bg-white shadow-md absolute top-0">
-        <div className="text-3xl font-bold text-sky-900">
-          Flash <span className="text-orange-600">Pics</span>
-        </div>
-        <ul className="flex space-x-6">
-          <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Home</li>
-          <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Photos</li>
-          <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Vectors</li>
-          <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Illustrations</li>
-          <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Collection</li>
-          <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Trend</li>
-        </ul>
-        <div className="space-x-4">
-         
-          <button className="text-white bg-orange-500 rounded-lg px-4 py-2 hover:bg-orange-600 transition">
-            Register
-          </button>
-        </div>
-      </nav> */}
+     
 
       {/* Main Content */}
       <div className="w-full max-w-7xl flex justify-between items-center px-8">

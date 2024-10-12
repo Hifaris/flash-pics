@@ -13,11 +13,11 @@ function MainNavbar() {
      <div className="text-4xl font-bold text-sky-600 cursor-pointer" >
       Flash <span className="text-orange-600">Pics</span>
      </div>
-      <nav className="space-x-6">
-        <a className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Home</a>
-        <a className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Photos</a>
-        <a className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Illustrations</a>
-        <a className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Collection</a>
+      <nav className="space-x-6 flex gap-6">
+        <a className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold">Home</a>
+        <a className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold">Photos</a>
+        <a className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold">Illustrations</a>
+        <a className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold">Collection</a>
       </nav>
       <div className="space-x-4">
      

@@ -8,6 +8,9 @@ import MainSearch from '../pages/MainSearch'
 import Test from '../component/Test'
 import { ProtectRoute } from './protectRoute'
 import UserLayout from '../layouts/UserLayout'
+import AdminLayout from '../layouts/AdminLayout'
+import Dashboard from '../pages/Dashboard'
+import Cart from '../component/cart'
 
 
 const router = createBrowserRouter([
@@ -20,7 +23,8 @@ const router = createBrowserRouter([
         {path: 'register', element: <Register/>},
         {path: 'login', element: <Login/>},
         {path: 'search', element: <MainSearch/>},
-        {path: 'test', element: <Test/>}
+        {path: "/photo/:id", element: <Test/>},
+        { path: '/cart', element: <Cart /> }
     ]
  },
 
@@ -30,7 +34,16 @@ const router = createBrowserRouter([
   children:[
     {index:true, element: <Main_Home/>},
     {path: 'search', element: <MainSearch/>},
-    {path: 'test', element: <Test/>}
+    // {path: "/photo/:id", element: <Test/>},
+    // {path: '*', element: <Main_Home/>},
+    
+  ]
+ },
+ {
+  path: "/admin",
+  element: <ProtectRoute element={<AdminLayout/>} allow={["ADMIN"]} />,
+  children:[
+    {index: true, element: <Dashboard/>}
   ]
  }
 

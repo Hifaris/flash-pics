@@ -39,26 +39,7 @@ function Register() {
         "url('https://images.unsplash.com/photo-1428992858642-0908d119bd3e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
     }}
   >
-    {/* Navbar */}
-    {/* <nav className="w-full flex justify-between items-center px-8 py-4 bg-white shadow-md absolute top-0">
-      <div className="text-3xl font-bold text-sky-900">
-        Flash <span className="text-orange-600">Pics</span>
-      </div>
-      <ul className="flex space-x-6">
-        <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Home</li>
-        <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Photos</li>
-        <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Vectors</li>
-        <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Illustrations</li>
-        <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Collection</li>
-        <li className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Trend</li>
-      </ul>
-      <div className="space-x-4">
-        <button className="text-sky-900 border border-sky-900 rounded-lg px-4 py-2 hover:bg-sky-900 hover:text-white transition">
-          Login
-        </button>
-     
-      </div>
-    </nav> */}
+   
 
     <div className="w-full max-w-7xl flex justify-between items-center px-8 mt-10">
       
@@ -78,11 +59,7 @@ function Register() {
  
         <form onSubmit={hdlSubmit}>
           <div className="mb-4">
-            {/* <label className="block text-gray-700 font-semibold mb-2"
-            value={form.}
-            >
-              Username
-            </label> */}
+           
             <label className="block text-gray-700 font-semibold mb-2">
               Email
             </label>

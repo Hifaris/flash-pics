@@ -1,0 +1,54 @@
+
+import cat1 from "../assets/cat1.jpg"
+import cat2 from "../assets/cat2.jpg"
+import cat3 from "../assets/cat3.jpg"
+
+export const imageDetails = [
+    {
+        id: "fp01",
+        title: "Black Cat Lies On The Floor",
+        keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor'],
+        image: "https://images.unsplash.com/photo-1472491235688-bdc81a63246e?w=500&auto=format&fit=crop&q=60", // Replace MainPhoto with the actual URL or path
+        similarImages: [cat1, cat2, cat3], // Similar images
+      }, { title: "orang cat", id: "fp02",image:"https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2F0fGVufDB8fDB8fHww",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty'],similarImages: [cat1, cat2, cat3]},
+      { title: "cat with black background", id: "fp03",image:"https://images.unsplash.com/photo-1478098711619-5ab0b478d6e6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2F0fGVufDB8fDB8fHww",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty'],similarImages: [cat1, cat2, cat3]},
+      { title: "cat with black background", id: "fp04",image:"https://images.unsplash.com/photo-1478098711619-5ab0b478d6e6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2F0fGVufDB8fDB8fHww",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty'],similarImages: [cat1, cat2, cat3]},
+      { title: "cat with black background", id: "fp05",image:"https://images.unsplash.com/photo-1516139008210-96e45dccd83b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty'],similarImages: [cat1, cat2, cat3]},
+      { title: "sleepy cat", id: "fp06",image:"https://images.unsplash.com/photo-1513245543132-31f507417b26?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty'],similarImages: [cat1, cat2, cat3]},
+      { title: "cute cat", id: "fp07",image:"https://images.unsplash.com/photo-1509205477838-a534e43a849f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty'],similarImages: [cat1, cat2, cat3]},
+      { title: "cute cat", id: "fp08",image:"https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty'],similarImages: [cat1, cat2, cat3]},
+      { title: "cute cat", id: "fp09",image:"https://images.unsplash.com/photo-1498100152307-ce63fd6c5424?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty'],similarImages: [cat1, cat2, cat3]},
+      { title: "cute cat", id: "fp10",image:"https://images.unsplash.com/photo-1568152950566-c1bf43f4ab28?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty'],similarImages: [cat1, cat2, cat3]},
+      { title: "cute cat", id: "fp11",image:"https://images.unsplash.com/photo-1502083896352-259ab9e342d7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty'],similarImages: [cat1, cat2, cat3]},
+      { title: "cute cat", id: "fp12",image:"https://images.unsplash.com/photo-1511275539165-cc46b1ee89bf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty'],similarImages: [cat1, cat2, cat3]},
+ 
+];
+
+export const image = [
+    { title: "white cat portrait photo with blur background",id: "fp01",image:"https://images.unsplash.com/photo-1472491235688-bdc81a63246e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww",
+      keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+    { title: "orang cat", id: "fp02",image:"https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2F0fGVufDB8fDB8fHww",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+    { title: "cat with black background", id: "fp03",image:"https://images.unsplash.com/photo-1478098711619-5ab0b478d6e6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2F0fGVufDB8fDB8fHww",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+    { title: "cat with black background", id: "fp04",image:"https://images.unsplash.com/photo-1478098711619-5ab0b478d6e6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Y2F0fGVufDB8fDB8fHww",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+    { title: "cat with black background", id: "fp05",image:"https://images.unsplash.com/photo-1516139008210-96e45dccd83b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+    { title: "sleepy cat", id: "fp06",image:"https://images.unsplash.com/photo-1513245543132-31f507417b26?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjN8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+    { title: "cute cat", id: "fp07",image:"https://images.unsplash.com/photo-1509205477838-a534e43a849f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+    { title: "cute cat", id: "fp08",image:"https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+    { title: "cute cat", id: "fp09",image:"https://images.unsplash.com/photo-1498100152307-ce63fd6c5424?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+    { title: "cute cat", id: "fp10",image:"https://images.unsplash.com/photo-1568152950566-c1bf43f4ab28?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+    { title: "cute cat", id: "fp11",image:"https://images.unsplash.com/photo-1502083896352-259ab9e342d7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+    { title: "cute cat", id: "fp12",image:"https://images.unsplash.com/photo-1511275539165-cc46b1ee89bf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGNhdHxlbnwwfHwwfHx8MA%3D%3D",keywords: ['Cat', 'Black', 'Sleep', 'Funny', 'Background', 'Floor', 'White', 'Animal', 'Rest', 'Relax', 'Pet', 'Cute', 'Kitty']},
+   
+  ];
+
+  export const categories = [
+    { name: "Business", image:"https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGJ1c2luZXNzfGVufDB8fDB8fHww"},
+    { name: "Animal", image:"https://images.unsplash.com/photo-1472491235688-bdc81a63246e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww" },
+    { name: "Sea", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2VhfGVufDB8fDB8fHww" },
+    { name: "Activity", image: "https://images.unsplash.com/photo-1486739985386-d4fae04ca6f7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFjdGl2aXR5fGVufDB8fDB8fHww"},
+    { name: "Mountain", image: "https://images.unsplash.com/photo-1447687643809-e05fd462f350?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vdXRhaW58ZW58MHx8MHx8fDA%3D" },
+    { name: "AI/Tech", image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGVjaG5vbG9neXxlbnwwfHwwfHx8MA%3D%3D" },
+    { name: "Holiday", image: "https://images.unsplash.com/photo-1482517967863-00e15c9b44be?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG9saWRheXxlbnwwfHwwfHx8MA%3D%3D" },
+    { name: "Agriculture", image: "https://images.unsplash.com/photo-1477558716721-e28322f187c6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fEFncmljdWx0dXJlfGVufDB8fDB8fHww" },
+    { name: "Background", image: "https://images.unsplash.com/photo-1472289065668-ce650ac443d2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmFja2dyb3VuZHxlbnwwfHwwfHx8MA%3D%3D" },
+  ];

@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -36,6 +36,9 @@ const hdlHome = ()=>{
         <button className="text-white bg-orange-500 rounded-lg px-4 py-2 hover:bg-orange-600 transition" onClick={hdlRegister}>
             Register
           </button>
+        <Link to={"/cart"} className="text-white bg-orange-500 rounded-lg px-4 py-2 hover:bg-orange-600 transition">
+            Cart
+          </Link>
       </div>
     </header>
  

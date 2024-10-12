@@ -18,7 +18,7 @@ const Header = () => {
       <div className="absolute inset-0 flex flex-col justify-center items-center text-white">
         <div className="flex gap-2">
 
-        <h1 className="text-4xl font-bold">Transform Ideas into Images Faster With</h1><span className="text-4xl font-bold text-sky-600">Flash</span><span className="text-4xl font-bold text-orange-600">Pics</span>
+        <h1 className="text-4xl font-bold">Transform Ideas into Images Faster With</h1><span className="text-4xl font-bold text-sky-500">Flash</span><span className="text-4xl font-bold text-orange-600">Pics</span>
         </div>
         <div className="mt-6">
           <input type="text" placeholder="Search for images" className="px-4 py-2 rounded-l-md" />
