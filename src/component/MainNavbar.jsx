@@ -1,5 +1,6 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
 
 function MainNavbar() {
 
@@ -25,6 +26,9 @@ function MainNavbar() {
         <button className="text-white bg-orange-500 rounded-lg px-4 py-2 hover:bg-orange-600 transition" onClick={hdlLogout}>
             Logout
           </button>
+          <Link to={"user/cart"} className="text-white bg-orange-500 rounded-lg px-4 py-2 hover:bg-orange-600 transition">
+            Cart
+          </Link>
       </div>
     </header>
   )

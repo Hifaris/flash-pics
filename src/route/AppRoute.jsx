@@ -11,6 +11,7 @@ import UserLayout from '../layouts/UserLayout'
 import AdminLayout from '../layouts/AdminLayout'
 import Dashboard from '../pages/Dashboard'
 import Cart from '../component/cart'
+import AddPhotos from '../admin/AddPhotos'
 
 
 const router = createBrowserRouter([
@@ -43,7 +44,8 @@ const router = createBrowserRouter([
   path: "/admin",
   element: <ProtectRoute element={<AdminLayout/>} allow={["ADMIN"]} />,
   children:[
-    {index: true, element: <Dashboard/>}
+    {index: true, element: <Dashboard/>},
+    {path: 'addPhoto', element: <AddPhotos/>}
   ]
  }
 

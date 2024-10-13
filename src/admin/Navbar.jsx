@@ -13,8 +13,8 @@ const AdminNavbar = () => {
   }
   return (
     <nav className="bg-white p-4 shadow-md flex justify-between items-center">
-      <div>
-        <h1 className="text-xl font-bold">Dashboard</h1>
+      <div className="text-2xl font-bold">
+        <span className='text-sky-600'>Flash</span><span className="text-orange-600">Pics</span>
       </div>
       <div>
         <button className="bg-blue-500 text-white py-2 px-4 rounded" onClick={hdlLogout}>Logout</button>
