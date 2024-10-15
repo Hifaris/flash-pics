@@ -15,7 +15,7 @@ export const ProtectRoute = ({element,allow})=>{
 
     const checkRole = async ()=>{
         try {
-            console.log(token)
+            // console.log(token)
             const resp = await currentUser(token)
             const role = resp.data.member.role
             console.log(role,"from backend")

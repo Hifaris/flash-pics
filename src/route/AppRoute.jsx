@@ -12,6 +12,10 @@ import AdminLayout from '../layouts/AdminLayout'
 import Dashboard from '../pages/Dashboard'
 import Cart from '../component/cart'
 import AddPhotos from '../admin/AddPhotos'
+import Category from '../admin/Category'
+import ProtectRouteUser from './ProtectRouteUser'
+import ProtectRouteAdmin from './ProtectRouteAdmin'
+import AdminDashbord from '../admin/AdminDashbord'
 
 
 const router = createBrowserRouter([
@@ -24,28 +28,34 @@ const router = createBrowserRouter([
         {path: 'register', element: <Register/>},
         {path: 'login', element: <Login/>},
         {path: 'search', element: <MainSearch/>},
-        {path: "/photo/:id", element: <Test/>},
-        { path: '/cart', element: <Cart /> }
+        {path: "*", element: <Login/>}
+        // {path: "photo/:id", element: <Test/>},
+        // { path: 'cart', element: <Cart /> }
     ]
  },
 
  {
   path: "/user",
-  element: <ProtectRoute element={<UserLayout/>} allow={["USER"]}/>,
+  element: <ProtectRouteUser element={<UserLayout/>} />,
+  // allow={["USER"]}
   children:[
     {index:true, element: <Main_Home/>},
     {path: 'search', element: <MainSearch/>},
-    // {path: "/photo/:id", element: <Test/>},
-    // {path: '*', element: <Main_Home/>},
+    { path: 'user/cart', element: <Cart /> },
+    {path: "photo/:id", element: <Test/>},
+    {path: '*', element: <Main_Home/>},
     
   ]
  },
  {
   path: "/admin",
-  element: <ProtectRoute element={<AdminLayout/>} allow={["ADMIN"]} />,
+  element: <ProtectRouteAdmin element={<AdminLayout/>} />,
   children:[
-    {index: true, element: <Dashboard/>},
-    {path: 'addPhoto', element: <AddPhotos/>}
+    {index: true, element: <AdminDashbord/>},
+    {path: 'allPhotos', element: <Dashboard/>},
+    {path: 'addPhoto', element: <AddPhotos/>},
+    {path: 'category', element: <Category/>},
+    {path: '*', element: <AdminDashbord/>}
   ]
  }
 

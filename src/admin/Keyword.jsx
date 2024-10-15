@@ -5,7 +5,7 @@ function Keyword() {
     const [keywordsInput, setKeywordsInput] = useState('');
   return (
     <div>
-  <label className="block mb-2">Keywords Suggestion</label>
+  <label className="block mb-2">Keywords</label>
   <textarea
     className="w-full p-2 border rounded"
     rows="2"

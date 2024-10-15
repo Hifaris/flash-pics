@@ -4,9 +4,9 @@ function CartBox({item,index,handleRemove}) {
   return (
     <div key={index} className="flex justify-between items-center mb-4 p-4 border-b border-gray-200">
     <div className="flex flex-col gap-2">
-      <h2 className="text-lg font-bold">{item.name}</h2>
+      <p className="text-sm font-semibold">Photo Id {item.id}</p>
       <img
-        src={item.image}
+        src={item.url}
         className="w-24 h-24 rounded object-cover"
       />
     </div>

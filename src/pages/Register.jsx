@@ -41,10 +41,10 @@ function Register() {
   >
    
 
-    <div className="w-full max-w-7xl flex justify-between items-center px-8 mt-10">
+    <div className="w-full max-w-8xl flex justify-evenly items-center px-8 mt-10">
       
      
-      <div className="text-white max-w-lg ml-10 flex flex-col gap-5"> 
+      <div className="text-white max-w-lg ml-10 flex flex-col gap-10"> 
         <h1 className="text-6xl font-extrabold text-sky-900 mb-4">
           Flash <span className="text-orange-500">Pics</span>
         </h1>

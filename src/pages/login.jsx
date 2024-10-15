@@ -45,7 +45,7 @@ function Login() {
      
 
       {/* Main Content */}
-      <div className="w-full max-w-7xl flex justify-between items-center px-8">
+      <div className="w-full max-w-8xl flex justify-evenly items-center px-8 ">
         
        
         <div className="text-white max-w-lg ml-10 flex flex-col gap-5"> 

@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainPhoto from "../assets/cat.jpg"
 import { useNavigate } from 'react-router-dom';
 import { image } from '../assets/photoMock';
+import photoStore from '../store/product-store';
+import useAuthStore from '../store/auth-store';
 
 
 const ImageShow = () => {
+
+  const getProduct = photoStore((state)=>state.getProduct)
+  const products = photoStore((state)=>state.products)
+  const token = useAuthStore((state)=> state.token)
   const navigate = useNavigate()
 
-  const hdlClick = (id) => {
-    navigate(`/photo/${id}`)
+  useEffect(()=>{
+    getProduct(token,9)
+  },[])
+  console.log(products)
+
+  const hdlClick = (item) => {
+    navigate(`/user/photo/${item.id}`,{state:item})
   }
   return (
     <div>
@@ -30,10 +41,10 @@ const ImageShow = () => {
 
           {
 
-            image.map((el) => (
+            products.map((el) => (
 
-              <img src={el.image} key={el.id}
-                className="w-full h-auto rounded cursor-pointer" onClick={() => hdlClick(el.id)} />
+              <img src={el.url} key={el.id}
+                className="w-full h-auto rounded cursor-pointer " onClick={() => hdlClick(el)} />
 
             ))
 
