@@ -9,7 +9,7 @@ import SearchPhoto from '../MainSearch/SearchPhoto'
 function MainSearch() {
   return (
     <div>
-     {/* <Header/> */}
+   
      <SearchPhoto/>
      <ImageShow/>
      <Pagination/>

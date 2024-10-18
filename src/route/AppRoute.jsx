@@ -16,6 +16,10 @@ import Category from '../admin/Category'
 import ProtectRouteUser from './ProtectRouteUser'
 import ProtectRouteAdmin from './ProtectRouteAdmin'
 import AdminDashbord from '../admin/AdminDashbord'
+import EditPhoto from '../admin/EditPhoto'
+import PhotoCategory from '../pages/PhotoCategory'
+import UserProfile from '../component/UserProfile'
+import UserOrder from '../component/UserOrder'
 
 
 const router = createBrowserRouter([
@@ -40,9 +44,12 @@ const router = createBrowserRouter([
   // allow={["USER"]}
   children:[
     {index:true, element: <Main_Home/>},
+    {path: 'profile', element: <UserProfile/>},
     {path: 'search', element: <MainSearch/>},
     { path: 'user/cart', element: <Cart /> },
+    { path: 'order', element: <UserOrder /> },
     {path: "photo/:id", element: <Test/>},
+    {path: "category/:id", element: <PhotoCategory/>},
     {path: '*', element: <Main_Home/>},
     
   ]
@@ -54,6 +61,7 @@ const router = createBrowserRouter([
     {index: true, element: <AdminDashbord/>},
     {path: 'allPhotos', element: <Dashboard/>},
     {path: 'addPhoto', element: <AddPhotos/>},
+    {path: 'editPhoto/:id', element: <EditPhoto/>},
     {path: 'category', element: <Category/>},
     {path: '*', element: <AdminDashbord/>}
   ]

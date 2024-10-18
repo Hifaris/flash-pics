@@ -13,14 +13,14 @@ function Keyword() {
     onChange={(e) => setKeywordsInput(e.target.value)}
   />
   <button
-    className="bg-orange-500 text-white px-4 py-2 rounded mt-2"
+    className="bg-orange-500 text-white px-4 py-2 rounded mt-2 mx-auto"
     onClick={() => {
       if (keywordsInput.trim() !== '') {
         setKeywords([...keywords, keywordsInput.trim()]);
         setKeywordsInput('');
       }
     }}
-  >
+  > 
     +
   </button>
   <div className="flex flex-wrap gap-2 mt-4">

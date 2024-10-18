@@ -19,7 +19,7 @@ const AdminSidebar = () => {
               <Link to={'/admin'}  className="mb-2 text-gray-600 cursor-pointer">Dashboard</Link>
               <Link to={"allPhotos"} className="mb-2 text-gray-600 cursor-pointer">All photo</Link>
               <li className="mb-2 text-gray-600 cursor-pointer" onClick={hdlClick}>Upload photo</li>
-              <li className="mb-2 text-gray-600 cursor-pointer" onClick={hdlClick}>Edit photo</li>
+              <li className="mb-2 text-gray-600 cursor-pointer" >Edit photo</li>
               <li className="mb-2 text-gray-600 cursor-pointer">Delete photo</li>
             </ul>
           </nav>
