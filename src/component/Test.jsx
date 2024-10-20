@@ -20,6 +20,7 @@ const PhotoDetail = () => {
   const products = photoStore((state) => state.products)
   const allPhoto = photoStore((state)=> state.allPhotos)
   const token = useAuthStore((state) => state.token)
+  const addToCart = cartStore((state)=>state.addToCart)
   const [photo, setPhoto]= useState([])
 
   // const [cart,setCart] =({id:"",price:""})
@@ -33,7 +34,7 @@ const PhotoDetail = () => {
     readPhoto(id)
   }, [])
   console.log("ppppp",products)
-  const { addToCart } = cartStore()
+  // const { addToCart } = cartStore()
   const { id } = useParams(); // Get the photo ID from the URL
   // const selectedPhoto = imageDetails.map(photo => photo.id === id); // Find the photo by id
 
@@ -51,30 +52,24 @@ const PhotoDetail = () => {
   }
   console.log(photo)
  
-  const handleAddToCart = async() => {
-    addToCart(photo);
-    // const resp = await addCart(token)
-    // console.log(resp)
+  const handleAddToCart = async (photo) => {
+    try {
+      addToCart(photo); 
+      const cart = cartStore.getState().carts
+      await addCart(token, cart)
+    } catch (err) {
+      console.error(err);
+    }
   };
-  
 
 
-  // console.log("state",location.state)
+ 
   return (
     <div>
       <main className="container mx-auto mt-8 px-6">
-        {/* <div className="flex justify-center mb-6">
-          <input
-            type="text"
-            placeholder="Cat"
-            className="w-full max-w-2xl border border-gray-300 rounded-full py-2 px-4"
-          />
-          <button className="bg-orange-600 text-white rounded-full px-4 ml-2">
-            Search Photo
-          </button>
-        </div> */}
+      
         <div className="flex justify-center mb-6">
-          <button className="bg-blue-500 text-white py-2 px-6 rounded-full hover:scale-105" onClick={handleAddToCart}>
+          <button className="bg-blue-500 text-white py-2 px-6 rounded-full hover:scale-105" onClick={()=>handleAddToCart(photo)}>
             Add To Cart
           </button>
         </div>

@@ -1,16 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import cartStore from '../store/cart-store';
 import CartBox from './cartBox';
-import { addCart } from '../api/cart';
+import { addCart, deleteCart, getUserCart, saveOrder } from '../api/cart';
 import useAuthStore from '../store/auth-store';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
-  const { cart, removeFromCart, clearCart} = cartStore();
+  const { carts, removeFromCart, clearCart,totalPrice} = cartStore();
+  const token = useAuthStore((state)=> state.token)
+  const [order,setOrder]=useState(null)
+
+  useEffect(() => {
+   getCart(token)
+  }, [])
+
+  const getCart =async(token)=>{
+    try {
+      
+      const resp = await getUserCart(token)
+      setOrder(resp.data)
+      console.log(resp.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
 
  
-  const handleRemove = (id) => {
-      removeFromCart(id);
+  const handleRemove = async(id) => {
+
+      try {
+        const resp = await deleteCart(token,id)
+        console.log(resp)
+        getCart(token)
+      } catch (err) {
+        console.log(err)
+      }
+      // removeFromCart(id);
   
   };
 
@@ -20,33 +46,38 @@ const Cart = () => {
       clearCart();
   }
 
+  const hdlCheckout =async()=>{
+    const resp = await saveOrder(token)
+    console.log(resp)
+    getCart(token)
+  }
+//  console.log(token)
+
   
 
   return (
-    <div className="w-2/4 mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-3xl font-semibold text-sky-600 mb-4">Cart</h1>
-      {cart.length === 0 ? (
-        <p className="text-lg text-gray-600">Your cart is empty.</p>
-      ) : (
-        <div>
-          {cart.map((item, index) => (
-           <CartBox item={item} index={index} handleRemove={handleRemove}/>
-          ))}
-          <div className='flex justify-around'>
-            
-          <button className="bg-white border border-orange-500 text-orange-500 rounded-lg px-4 py-2 hover:bg-orange-500 hover:text-white transition"> Checkout </button>
-          <div>
-          <p className='text-lg font-semibold justify-center items-center  text-sky-600 mt-2 '>
-            Total:</p>
+    <div className="w-3/4 mx-auto mt-10 p-8 bg-white rounded-lg shadow-lg">
+  <h1 className="text-4xl font-bold text-sky-700 mb-6 text-center">Shopping Cart</h1>
+  {order && (
+    <div>
+      {order.CartDetail.map((item, index) => (
+        <CartBox key={index} item={item} handleRemove={handleRemove} />
+      ))}
+      <div className='flex justify-between items-center mt-6'>
+        <p className='text-xl font-semibold text-sky-600'>Total: {order.cartTotal} THB</p>
+        <div className="flex space-x-4">
+          <Link to={"/user/order"}>
 
-          </div>
-          <button onClick={handleClearCart} className="bg-white border border-sky-600 text-sky-600 hover:bg-blue-600 hover:text-white font-bold py-2 px-4 rounded">
+          <button className="bg-orange-500 text-white rounded-lg px-6 py-2 hover:bg-orange-500 transition" onClick={hdlCheckout}>Checkout</button>
+          </Link>
+          <button onClick={handleClearCart} className="bg-white border border-sky-600 text-sky-600 rounded-lg px-4 py-2 hover:bg-blue-500 hover:text-white transition">
             Clear Cart
           </button>
-          </div>
         </div>
-      )}
+      </div>
     </div>
+  )}
+</div>
   );
 };
 

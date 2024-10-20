@@ -20,6 +20,8 @@ import EditPhoto from '../admin/EditPhoto'
 import PhotoCategory from '../pages/PhotoCategory'
 import UserProfile from '../component/UserProfile'
 import UserOrder from '../component/UserOrder'
+import FinishOrder from '../component/FinishOrder'
+import Payment from '../component/Payment'
 
 
 const router = createBrowserRouter([
@@ -48,6 +50,8 @@ const router = createBrowserRouter([
     {path: 'search', element: <MainSearch/>},
     { path: 'user/cart', element: <Cart /> },
     { path: 'order', element: <UserOrder /> },
+    { path: 'order/:id', element: <FinishOrder /> },
+    { path: 'payment/:id', element: <Payment /> },
     {path: "photo/:id", element: <Test/>},
     {path: "category/:id", element: <PhotoCategory/>},
     {path: '*', element: <Main_Home/>},
