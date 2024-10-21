@@ -22,7 +22,7 @@ export const addCart = async (token, cart) => {
         Authorization: `Bearer ${token}`
     }
 })
-export const deleteCart = async (token, photoId) => axios.delete(`/user/cart`, {
+export const deleteCart = async (token, photoId) => axios.delete(`/user/cart/${photoId}`, {
     headers: {
         Authorization: `Bearer ${token}`
     }

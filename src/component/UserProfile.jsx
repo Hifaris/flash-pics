@@ -21,7 +21,7 @@ function UserProfile() {
 
   useEffect(() => {
     getUser(token);
-    // currentUser(token)
+  
     
 
   }, [token]);
@@ -45,7 +45,7 @@ function UserProfile() {
   };
 
   const handleUpdateProfile = () => {
-    setModalOpen(true); // Open modal when clicking "Update Profile"
+    setModalOpen(true); 
   };
 
   const handleCloseModal = () => {

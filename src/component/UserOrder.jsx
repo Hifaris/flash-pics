@@ -116,7 +116,7 @@ function UserOrder() {
         <TableCell>{el.total}</TableCell>
         <TableCell 
           className={`text-right font-medium ${
-            el.paymentStatus === 'PENDING' ? 'text-green-600' : 'text-orange-500'
+            el.paymentStatus === 'PENDING' ? 'text-yellow-500' : 'text-green-600'
           }`}
         >
           {el.paymentStatus}

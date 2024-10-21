@@ -4,6 +4,8 @@ import CartBox from './cartBox';
 import { addCart, deleteCart, getUserCart, saveOrder } from '../api/cart';
 import useAuthStore from '../store/auth-store';
 import { Link } from 'react-router-dom';
+import { IdCardIcon } from '@radix-ui/react-icons';
+import { IdCard } from 'lucide-react';
 
 const Cart = () => {
   const { carts, removeFromCart, clearCart,totalPrice} = cartStore();
@@ -32,6 +34,7 @@ const Cart = () => {
       try {
         const resp = await deleteCart(token,id)
         console.log(resp)
+        removeFromCart(id)
         getCart(token)
       } catch (err) {
         console.log(err)
