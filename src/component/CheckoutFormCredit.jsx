@@ -5,6 +5,7 @@ import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { useNavigate, useParams } from 'react-router-dom';
 import { paymentStatus } from '../api/cart';
 import useAuthStore from '../store/auth-store';
+import { toast } from 'react-toastify';
 
 
 
@@ -20,7 +21,6 @@ export default function CheckoutFormCredit() {
     const [message, setMessage] = useState(null);
     const [isProcessing, setIsProcessing] = useState(false);
 
-    console.log(token);
 
     const handleSubmit = async (e) => {
         try {
@@ -54,6 +54,7 @@ export default function CheckoutFormCredit() {
             if(paymentIntent.status === "succeeded"){
                 const response = await paymentStatus(token,id)
                 navigate('/user/order')
+                toast.success("Payment successful")
             }
             setIsProcessing(false);
         } catch (error) {

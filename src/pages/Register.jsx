@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Email } from "../icons";
 import useAuthStore from '../store/auth-store';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import validateRegister from '../utils/validate';
 
 const initialState = {
   email: '',
@@ -16,6 +19,7 @@ function Register() {
     password: '',
     confirmPassword: ''
   })
+  const [formError, setFormError] = useState({})
 
   console.log(form)
 
@@ -26,8 +30,14 @@ function Register() {
 
   const hdlSubmit =(e)=>{
     e.preventDefault()
+
+    const error = validateRegister(form)
+    if(error){
+      return setFormError(error)
+    }
     actionRegister(form)
     setForm(initialState)
+    setFormError({})
     
   }
 
@@ -75,6 +85,9 @@ function Register() {
                 onChange={hdlOnchange}
               />
             </div>
+            {formError.email&& (
+              <span className='text-red-500 text-xs'>{formError.email}</span>
+            )}
           </div>
 
           <div className="mb-6">
@@ -91,7 +104,11 @@ function Register() {
                 placeholder="Password"
                 className="w-full ml-3 text-sm focus:outline-none"
               />
+          
             </div>
+            {formError.password&& (
+              <span className='text-red-500 text-xs'>{formError.password}</span>
+            )}
           </div>
           <div className="mb-6">
             <label className="block text-gray-700 font-semibold mb-2">
@@ -107,7 +124,11 @@ function Register() {
                 placeholder="Password"
                 className="w-full ml-3 text-sm focus:outline-none"
               />
+           
             </div>
+            {formError.confirmPassword&& (
+              <span className='text-red-500 text-xs'>{formError.confirmPassword}</span>
+            )}
           </div>
 
           <div className="mb-6">
@@ -120,9 +141,9 @@ function Register() {
           </div>
 
           <div className="text-center">
-            <button className="text-orange-500 font-bold py-2 px-4 border border-orange-600 rounded-lg hover:bg-orange-200 transition duration-200">
+            <Link to={"login"} className="text-orange-500 font-bold py-2 px-4 border border-orange-600 rounded-lg hover:bg-orange-200 transition duration-200">
              Login
-            </button>
+            </Link>
           </div>
         </form>
       </div>

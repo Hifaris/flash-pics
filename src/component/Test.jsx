@@ -8,6 +8,7 @@ import useAuthStore from '../store/auth-store';
 import { Watermark } from "antd";
 import { readPhotoDetail } from '../api/photo';
 import { addCart } from '../api/cart';
+import { toast } from 'react-toastify';
 
 
 
@@ -46,6 +47,7 @@ const PhotoDetail = () => {
       const resp = await readPhotoDetail(id)
       console.log(resp.data)
       setPhoto(resp.data.photo)
+
     } catch (err) {
       console.log(err)
     }
@@ -57,6 +59,7 @@ const PhotoDetail = () => {
       addToCart(photo); 
       const cart = cartStore.getState().carts
       await addCart(token, cart)
+      toast.success("Add photo to cart")
     } catch (err) {
       console.error(err);
     }
@@ -95,7 +98,7 @@ const PhotoDetail = () => {
               <p className="text-gray-800 font-semibold">
                 {photo.title}
               </p>
-              {/* <p>{selectedPhoto.description}</p> */}
+           
             </div>
           </div>
           <div className="mb-4">

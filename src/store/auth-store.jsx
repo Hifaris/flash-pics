@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { login, register } from "../api/auth";
 import { listPhoto } from "../api/photo";
+import { toast } from 'react-toastify';
 
 const useAuthStore = create(persist((set)=>({
    user:null,
@@ -10,9 +11,11 @@ const useAuthStore = create(persist((set)=>({
    actionRegister : async(form)=>{
     try {
         const resp = await register(form)
+        toast.success(resp.data)
         console.log(resp.data)
     } catch (err) {
         const errMsg = err.response.data.message
+        toast.error(errMsg)
         console.log(errMsg)
     }
    },
@@ -21,10 +24,11 @@ const useAuthStore = create(persist((set)=>({
         const resp = await login(form)
         console.log("userrr",resp.data.user)
         set({token: resp.data.token, user: resp.data.user})
-        console.log(resp)
+        toast.success(resp.data)
         return resp.data.user
     } catch (err) {
-        console.log(err)
+        toast.error(err.response.data.message)
+      
     }
    },
    actionLogout: async()=>{

@@ -12,7 +12,7 @@ function MainSearch() {
    
      <SearchPhoto/>
      <ImageShow/>
-     <Pagination/>
+     {/* <Pagination/> */}
 
     </div>
   )

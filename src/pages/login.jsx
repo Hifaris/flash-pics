@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import greenBackground from "../assets/backgroundImage.jpg";
 import { Email } from "../icons";
 import useAuthStore from "../store/auth-store";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 function Login() {
   const navigate = useNavigate()
@@ -20,8 +21,9 @@ function Login() {
     // console.log(form)
     const role = await actionLogin(form)
     roleRedirect(role)
-    console.log(role.role,"role")
-    console.log(form,"form")
+    toast.success("Login successful")
+    // console.log(role.role,"role")
+    // console.log(form,"form")
   
   }  
 
@@ -108,9 +110,9 @@ function Login() {
             </div>
 
             <div className="text-center">
-              <button className="text-orange-500 font-bold py-2 px-4 border border-orange-600 rounded-lg hover:bg-orange-200 transition duration-200">
+              <Link to={"register"} className="text-orange-500 font-bold py-2 px-4 border border-orange-600 rounded-lg hover:bg-orange-200 transition duration-200">
                 Create account
-              </button>
+              </Link>
             </div>
           </form>
         </div>

@@ -22,10 +22,10 @@ const hdlHome = ()=>{
      <div className="text-4xl font-bold text-sky-600 cursor-pointer" onClick={hdlHome}>
       Flash <span className="text-orange-600">Pics</span>
      </div>
-      <nav className="space-x-6">
+      <nav className="space-x-6 flex gap-12">
         <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold" onClick={hdlHome}>Home</a>
         <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Photos</a>
-        <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Illustrations</a>
+        {/* <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Illustrations</a> */}
         <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Collection</a>
       </nav>
       <div className="space-x-4">

@@ -17,12 +17,12 @@ function PhotoCategory() {
         getProduct(token, 120)
     }, [])
 
-    
 
-   
+
+
     const hdlClick = (id) => {
         navigate(`/user/photo/${id}`)
-      }
+    }
 
     return (
         <div>
@@ -39,7 +39,9 @@ function PhotoCategory() {
 
                 </div>
             </div>
-
+            <div className="flex justify-center items-center ">
+                <h1 className="text-center text-2xl font-bold mb-6 opacity-70">Explore All {location.state.name} Photos here</h1>
+            </div>
             <div>
 
                 <div className="grid grid-cols-4 gap-3 mb-8 p-5 mt-10">
@@ -47,7 +49,7 @@ function PhotoCategory() {
                     {
 
                         location.state.Photos.map((el) => (
-                            <Link to={'/user/photo/'+el.id} >
+                            <Link to={'/user/photo/' + el.id} >
                                 <img src={el.url} key={el.id}
                                     className="w-full h-auto rounded cursor-pointer hover:scale-105 " />
 

@@ -22,6 +22,7 @@ import UserProfile from '../component/UserProfile'
 import UserOrder from '../component/UserOrder'
 import FinishOrder from '../component/FinishOrder'
 import Payment from '../component/Payment'
+import AllCategory from '../pages/AllCategory'
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
     { path: 'order/:id', element: <FinishOrder /> },
     { path: 'payment/:id', element: <Payment /> },
     {path: "photo/:id", element: <Test/>},
+    {path: "categories", element: <AllCategory/>},
     {path: "category/:id", element: <PhotoCategory/>},
     {path: '*', element: <Main_Home/>},
     

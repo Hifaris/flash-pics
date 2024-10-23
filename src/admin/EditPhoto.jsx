@@ -6,6 +6,7 @@ import useAuthStore from '../store/auth-store'
 import { createPhoto, editPhotoDetail, readPhotoDetail } from '../api/photo'
 import photoStore from '../store/product-store'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 
 
@@ -21,7 +22,7 @@ function EditPhoto() {
     const categories = categoryStore((state)=> state.categories)
     const photos = photoStore((state)=> state.products)
     const {id} = useParams()
-    // const editPhotoDetail = photoStore((state)=> state.editPhotoDetail)
+  
     const [photo,setPhoto]= useState([])
     const [form,setForm] = useState({
         title: "",
@@ -50,20 +51,7 @@ function EditPhoto() {
           console.log(err)
         }
       }
-    console.log('Photokuay',photo)
-    // console.log(photos)
-    // const initialState={
-    //     title: "",
-    //     price: "",
-    //     categoryId: "",
-    //     userId: user.id
-    // }
-    
-   
-    // console.log(categories)
-    // console.log(typeof(user.id))
-    // console.log(location.state)
-    
+
     const hdlOnChange = (e)=>{
         console.log(e.target.name, e.target.value)
         setForm({...form,[e.target.name]: e.target.value})
@@ -76,8 +64,10 @@ function EditPhoto() {
         try {
             const resp = await editPhotoDetail(token,id,form)
             console.log(resp)
+            toast.success("Edit successful")
         } catch (err) {
             console.log(err)
+            toast.success("Can not edit photo")
         }
        navigate("/admin/allPhotos")
         // setForm(initialState)

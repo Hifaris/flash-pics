@@ -6,15 +6,8 @@ import useAuthStore from '../store/auth-store'
 import { createPhoto } from '../api/photo'
 import photoStore from '../store/product-store'
 import UploadFile from './UploadFile'
+import { toast } from 'react-toastify';
 
-
-// const initialState={
-//     title: " cat and dog",
-//     url: "https://images.unsplash.com/photo-1501820488136-72669149e0d4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2F0fGVufDB8fDB8fHww",
-//     price: 190,
-//     categoryId: 1,
-//     userId: 5
-// }
 
 
 function AddPhotos() {
@@ -71,9 +64,12 @@ console.log(form)
         formData.append("type",form.type)
         try {
             const resp = await createPhoto(token,formData)
-            console.log(resp)
+            toast.success("add photo")
+            // console.log(resp.data)
+
         } catch (err) {
             console.log(err)
+            toast.error(" can not add photo")
         }
         setForm(initialState)
     }

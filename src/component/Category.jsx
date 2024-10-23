@@ -28,7 +28,7 @@ const Categories = () => {
     try {
       const resp = await getCategoryPhotos(token,id)
       const category = resp.data.result
-      navigate(`category/${id}`,{state: category})
+      navigate(`/user/category/${id}`,{state: category})
       console.log(category)
     } catch (err) {
       console.log(err)
@@ -40,7 +40,7 @@ const Categories = () => {
   return (
     <section className="p-8">
       <h2 className="text-center text-2xl font-bold mb-6 opacity-70">Popular Image Categories</h2>
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-3 gap-5 cursor-pointer">
         {categories.map((category) => (
           <div key={category.name} className="relative group" onClick={() => hdlGetPhotoByCategory(category.id)}>
             <img src={category.url} alt={category.name} className="w-[100%] h-60 object-cover rounded" />

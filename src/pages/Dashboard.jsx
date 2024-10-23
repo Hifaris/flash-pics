@@ -18,7 +18,7 @@ function Dashboard() {
   const navigate = useNavigate()
   
   useEffect(()=>{
-    getProduct(token,12)
+    getProduct(token,100)
   },[])
   // console.log(products)
   

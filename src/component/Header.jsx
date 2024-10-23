@@ -12,25 +12,10 @@ const Header = () => {
   const searchPhoto = photoStore((state)=> state.searchPhoto)
   const allPhoto = photoStore((state)=> state.allPhotos)
 
-  const [text, setText] = useState('')
-//   const hdlClick = ()=>{
-//     navigate("search")
-// }
 
-const handleSearch = async () => {
-  if (text) {
-      try {
-          console.log('Searching for:', text);  
-          await searchPhoto({ query: text });
-          navigate("search")
-      } catch (error) {
-          console.error('Search Error: ', error);
-      }
-  } else {
-      console.log("all photos");
-      allPhoto();  
-  }
-};
+
+
+
 
 const hdlShowAllPhoto = async()=>{
   try {
@@ -57,18 +42,12 @@ const hdlShowAllPhoto = async()=>{
         </div>
         <div className="flex w-3/5 justify-center items-center gap-4">
 
-        <button className="bg-sky-600 px-4 py-2 rounded mt-6 scale-105" onClick={hdlShowAllPhoto} >All Photos</button>
+        <button className="bg-sky-600 px-4 py-2 rounded mt-6 scale-105" onClick={hdlShowAllPhoto} >Explore All Photos here</button>
        
 
           
       
-        <div className="mt-6">
-          <input onChange={(e) => setText(e.target.value)}
-          type="text"
-          value={text} placeholder="Search for images" className="px-4 py-2 rounded-l-md w-3/5 text-gray-600" />
-       
-          <button className="bg-sky-600 px-4 py-2 rounded-r-md" onClick={handleSearch}>Search</button>
-        </div>
+  
         </div>
       </div>
     </section>
