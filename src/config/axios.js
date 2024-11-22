@@ -1,5 +1,5 @@
 import axios from "axios";
 
-axios.defaults.baseURL="http://localhost:8890/"
+axios.defaults.baseURL= process.env.VITE_API_URL
 
 export default axios
