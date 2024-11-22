@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cartStore from '../store/cart-store';
-import CartBox from './cartBox';
+import CartBox from './CartBox';
 import { addCart, deleteCart, getUserCart, saveOrder } from '../api/cart';
 import useAuthStore from '../store/auth-store';
 import { Link } from 'react-router-dom';
