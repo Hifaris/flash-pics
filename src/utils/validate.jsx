@@ -33,9 +33,6 @@ const validateRegister = (input)=>{
     // console.log(error.details)
     if(error){
         const formatError = error.details.reduce((acc,curr)=>{
-         
-        // console.log(curr.path[0])
-        // console.log(curr.message)
         acc[curr.path[0]] = curr.message
         console.log(acc)
          return acc

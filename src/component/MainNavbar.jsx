@@ -11,8 +11,8 @@ function MainNavbar() {
   const navigate = useNavigate()
 
   const hdlLogout = () => {
-    navigate("/login")
     actionLogout()
+    navigate("/login")
   }
   const hdlCart =()=>{
     navigate("user/cart")

@@ -12,6 +12,7 @@ import photoStore from '../store/product-store'
 import useAuthStore from '../store/auth-store'
 import { Delete } from '../icons'
 import { deletePhoto } from '../api/photo'
+import { FilePenLine } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
@@ -24,14 +25,14 @@ function AdminDashbord() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    getProduct(token, 20)
+    getProduct(50)
   }, [])
   const hdlDelete = async(id)=>{
     if(window.confirm("Confirm to delete this photo")){
       // console.log(id)
       try {
         const res = await deletePhoto(token,id)
-        getProduct(token, 20)
+        getProduct(50)
         console.log(res)
        toast.success("Delete photo")
       } catch (err) {
@@ -73,11 +74,12 @@ function AdminDashbord() {
           <TableCell>{el.title}</TableCell>
           <TableCell>{el.category.name}</TableCell>
           <TableCell className="text-right">{el.price}</TableCell>
-          <TableCell className="text-right flex align-middle justify-center pt-9 space-x-4">
+          <TableCell className="text-right flex justify-center items-center pt-9 space-x-4">
             {/* Add Edit button */}
-            <button className="text-blue-600 hover:text-blue-800" onClick={() => hdlEdit(el.id)}>Edit</button>
+            <FilePenLine color="#767474" className='flex justify-center items-center' onClick={() => hdlEdit(el.id)}  />
+            {/* <button className="text-blue-600 hover:text-blue-800" onClick={() => hdlEdit(el.id)}>Edit</button> */}
             {/* Delete icon */}
-            <Delete className="w-7 h-7 cursor-pointer" onClick={() => hdlDelete(el.id)} />
+            <Delete className="w-7 h-7 cursor-pointer flex justify-center items-center" onClick={() => hdlDelete(el.id)} />
           </TableCell>
         </TableRow>
       ))}

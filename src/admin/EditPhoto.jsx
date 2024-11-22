@@ -34,7 +34,7 @@ function EditPhoto() {
 
     useEffect(()=>{
         getCategory(token)
-        getPhoto(token,1)
+        getPhoto(1)
         readPhoto(id)
     },[])
 
@@ -45,6 +45,7 @@ function EditPhoto() {
           const resp = await readPhotoDetail(id)
           console.log(resp.data)
           setForm(resp.data.photo)
+          // get only original photo
           setPhoto(resp.data.photo)
 
         } catch (err) {
@@ -62,14 +63,22 @@ function EditPhoto() {
         e.preventDefault()
         console.log(form)
         try {
-            const resp = await editPhotoDetail(token,id,form)
-            console.log(resp)
-            toast.success("Edit successful")
+            if(!form.price){
+                return toast.error('Please fill price')
+            }
+        
+            if(Number(form.price) < 0){
+              return toast.error("Price must more than 0")
+            }
+                const resp = await editPhotoDetail(token,id,form)
+                console.log(resp)
+              
+                navigate("/admin/allPhotos")
         } catch (err) {
             console.log(err)
             toast.success("Can not edit photo")
         }
-       navigate("/admin/allPhotos")
+       
         // setForm(initialState)
     }
   return (
@@ -113,7 +122,7 @@ function EditPhoto() {
                 {/* <textarea className="w-full p-2 border rounded" rows="3"></textarea> */}
                 <input type="number"className='w-full p-2 border rounded' name='price' value={form.price} onChange={hdlOnChange} />
             </div>
-            <Keyword/>
+
             {/* <div className="mb-4">
                 <label className="block mb-2">Url</label>
                

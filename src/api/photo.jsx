@@ -6,11 +6,7 @@ export const createPhoto = async(token,form)=> axios.post("/photo",form,{
         Authorization: `Bearer ${token}`
     }
 })
-export const listPhoto = async(token,count)=> axios.get(`/photo/${count}`,{
-    headers:{
-        Authorization: `Bearer ${token}`
-    }
-})
+export const listPhoto = async(count)=> axios.get(`/photo/${count}`)
 
 export const allPhoto = async(text)=> axios.get("/photo",text)
 export const editPhotoDetail = async(token,id,form)=> axios.patch(`/photo/${id}`,form,{
@@ -23,7 +19,7 @@ export const deletePhoto = async(token,id)=> axios.delete(`/photo/${id}`,{
         Authorization: `Bearer ${token}`
     }
 })
-export const readPhoto = async(token,id)=> axios.delete(`/photo/get/${id}`,{
+export const readPhoto = async(id)=> axios.delete(`/photo/get/${id}`,{
     headers:{
         Authorization: `Bearer ${token}`
     }

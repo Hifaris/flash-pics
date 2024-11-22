@@ -6,10 +6,10 @@ const photoStore = create((set) => ({
   
     products:[],
     loading: false,
-    getProduct: async (token,count) => {
+    getProduct: async (count) => {
         set({loading: true})
         try {
-            const resp = await listPhoto(token,count)
+            const resp = await listPhoto(count)
             console.log(resp)
             set({ products: resp.data.photos,loading: false })
         } catch (err) {

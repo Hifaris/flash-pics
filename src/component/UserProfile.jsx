@@ -10,13 +10,14 @@ import {
 } from "@/components/ui/card";
 import { currentUser, updateUser } from '../api/auth';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function UserProfile() {
   const user = useAuthStore((state) => state.user);
   const token = useAuthStore((state) => state.token);
   const [form, setForm] = useState({});
   const [isModalOpen, setModalOpen] = useState(false);
-  const [editForm, setEditForm] = useState({ firstName: '', lastName: '', email: '',password:"" });
+  const [editForm, setEditForm] = useState({ firstName: '', lastName: '', email: '',password:"",confirmPassword:"" });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,12 +62,18 @@ function UserProfile() {
 
   const handleConfirm = async () => {
 
-    const resp = await updateUser(token,editForm)
-    console.log(resp)
-    
-    handleCloseModal();
-    // currentUser(token)
-    getUser(token);
+    if(editForm.password !== editForm.confirmPassword ){
+      toast.error("Password and Confirm password must be equal")
+    }else{
+
+      const resp = await updateUser(token,editForm)
+      console.log(resp)
+      
+      handleCloseModal();
+      // currentUser(token)
+      getUser(token);
+    }
+
   };
 
   const name = user.email.split("@")[0];
@@ -165,6 +172,16 @@ function UserProfile() {
                   type="password" 
                   name="password" 
                   value={editForm.password} 
+                  onChange={handleFormChange} 
+                  className="border rounded-lg p-2 w-full"
+                />
+              </label>
+              <label>
+                Confirm Password:
+                <input 
+                  type="password" 
+                  name="confirmPassword" 
+                  value={editForm.confirmPassword} 
                   onChange={handleFormChange} 
                   className="border rounded-lg p-2 w-full"
                 />

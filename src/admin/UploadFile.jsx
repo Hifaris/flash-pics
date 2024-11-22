@@ -4,7 +4,7 @@ function UploadFile({setForm, form,ref}) {
 
     const [isLoading, setIsLoading] = useState(false)
     const hdlOnChange = (e)=>{
-        
+        //array-like object ใช้เพื่อเข้าถึงไฟล์แรกที่ผู้ใช้เลือกจาก input ชนิดไฟล์
         const file = e.target.files[0]
         if(file){
            setIsLoading(true)  
@@ -15,7 +15,8 @@ function UploadFile({setForm, form,ref}) {
             previewPhoto: URL.createObjectURL(file)
         })
       }
-      // console.log(formData)
+
+      //useref to be the reference of file input
   return (
     <div className='mb-3'>
 

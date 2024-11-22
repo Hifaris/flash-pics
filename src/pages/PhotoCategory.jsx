@@ -14,7 +14,7 @@ function PhotoCategory() {
     console.log(location.state)
     const navigate = useNavigate()
     useEffect(() => {
-        getProduct(token, 120)
+        getProduct(120)
     }, [])
 
 

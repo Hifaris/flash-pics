@@ -9,7 +9,7 @@ function ProtectRouteUser({element}) {
     const [isAllowed, setIsAllowed] = useState(false)
     const user = useAuthStore((state)=> state.user)
     const token = useAuthStore((state)=> state.token)
-    const actionLogout = useAuthStore((state)=> state.actionLogout)
+    // const actionLogout = useAuthStore((state)=> state.actionLogout)
     console.log(user)
 
     useEffect(()=>{

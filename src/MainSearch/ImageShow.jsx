@@ -11,6 +11,7 @@ import Loading from '../component/Loading';
 const ImageShow = () => {
 
   const getProduct = photoStore((state)=>state.getProduct)
+  const user = useAuthStore((state)=> state.user)
   const allPhoto = photoStore((state)=>state.allPhotos)
   const loading = photoStore((state)=>state.loading)
   const products = photoStore((state)=>state.products)
@@ -18,30 +19,23 @@ const ImageShow = () => {
   const navigate = useNavigate()
 
   useEffect(()=>{
-    getProduct(token,19)
+    getProduct(19)
     // allPhoto()
   },[])
   // console.log(products)
 
+  console.log("check role --->",user?.role)
+
   const hdlClick = (item) => {
-    navigate(`/user/photo/${item.id}`)
+    {
+      user?.role ? navigate(`/user/photo/${item.id}`)
+      : navigate(`/photo/${item.id}`)
+    }
+    
   }
   return (
     <div>
       <div className="container mx-auto px-4 py-8">
-
-        {/* <div className="mb-4">
-          <span className="font-bold">Related search:</span>
-          <button className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full ml-2">Cat isolated</button>
-          <button className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full ml-2">Cute cat</button>
-          <button className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full ml-2">Cat and dog</button>
-          <button className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full ml-2">Cat sitting</button>
-          <button className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full ml-2">Cat white background</button>
-          <button className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full ml-2">Happy cat</button>
-        </div>
-        <div className="flex justify-end mb-4">
-          <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded">Sort by Relevance</button>
-        </div> */}
         {
           loading
           ? <Loading/>

@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { imageDetails } from '../assets/photoMock';
 import cartStore from '../store/cart-store';
 import photoStore from '../store/product-store';
@@ -22,7 +22,9 @@ const PhotoDetail = () => {
   const allPhoto = photoStore((state)=> state.allPhotos)
   const token = useAuthStore((state) => state.token)
   const addToCart = cartStore((state)=>state.addToCart)
+  const user = useAuthStore((state)=>state.user)
   const [photo, setPhoto]= useState([])
+  const navigate = useNavigate()
 
   // const [cart,setCart] =({id:"",price:""})
    
@@ -30,7 +32,7 @@ const PhotoDetail = () => {
 
 
   useEffect(() => {
-    // getProduct(token, 4)
+   
     allPhoto()
     readPhoto(id)
   }, [])
@@ -56,10 +58,14 @@ const PhotoDetail = () => {
  
   const handleAddToCart = async (photo) => {
     try {
-      addToCart(photo); 
-      const cart = cartStore.getState().carts
-      await addCart(token, cart)
-      toast.success("Add photo to cart")
+      if(!user){
+        navigate("/login")
+      }else{
+        addToCart(photo); 
+        const cart = cartStore.getState().carts
+        await addCart(token,cart)
+        toast.success("Add photo to cart")
+      }
     } catch (err) {
       console.error(err);
     }

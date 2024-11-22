@@ -11,6 +11,8 @@ function PaymentCredit({amount}) {
     const [stripePromise, setStripePromise] = useState(null);
     const [clientSecret, setClientSecret] = useState("");
 
+    //stripePromise: สถานะสำหรับเก็บ Promise ของการโหลด Stripe
+
     const fetchPublishableKey = async () => {
         try {
             const response = await axios.get("/payment/config")
@@ -20,6 +22,7 @@ function PaymentCredit({amount}) {
             console.error("Error fetching publishable key:", error);
         }
     };
+    //publishableKey สามารถใช้ได้ในฝั่งผู้ใช้ (client-side)
 
     const createPaymentIntent = async () => {
         try {

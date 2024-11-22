@@ -37,8 +37,7 @@ export default function CheckoutFormCredit() {
             const { error, paymentIntent } = await stripe.confirmPayment({
                 elements,
                 confirmParams: {
-                    // ทำการเปลี่ยนไปยังหน้าสำเร็จหลังจากยืนยันการชำระเงินสำเร็จ
-                    // return_url: `http://localhost:5174/customer`,
+                  
                 },
                 redirect: "if_required",
             });
