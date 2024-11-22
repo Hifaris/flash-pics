@@ -36,6 +36,7 @@ const router = createBrowserRouter([
         {path: 'login', element: <Login/>},
         {path: 'search', element: <MainSearch/>},
         {path: "/photo/:id", element: <Test/>},
+        {path: "category/:id", element: <PhotoCategory/>},
         {path: "*", element: <Login/>}
     ]
  },

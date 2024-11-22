@@ -15,6 +15,13 @@ const Navbar = () => {
 const hdlHome = ()=>{
   navigate("/")
 }
+const hdlphotos =()=>{
+  navigate("/search")
+}
+const hdlCategory =()=>{
+  navigate("/categories")
+}
+
 
 
   return (
@@ -23,10 +30,10 @@ const hdlHome = ()=>{
       Flash <span className="text-orange-600">Pics</span>
      </div>
       <nav className="space-x-6 flex gap-12">
-        <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold" onClick={hdlHome}>Home</a>
-        <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Photos</a>
+        <a className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold" onClick={hdlHome}>Home</a>
+        <a className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold" onClick={hdlphotos}>Photos</a>
         {/* <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Illustrations</a> */}
-        <a href="#" className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold">Collection</a>
+        <a className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold" onClick={hdlCategory}>Collection</a>
       </nav>
       <div className="space-x-4">
       <button className="text-sky-900 border border-sky-900 rounded-lg px-4 py-2 hover:bg-sky-900 hover:text-white transition" onClick={hdlLogin}>
