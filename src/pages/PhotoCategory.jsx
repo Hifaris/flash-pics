@@ -10,6 +10,7 @@ function PhotoCategory() {
     // const photos = photoStore((state)=> state.products)
     const getProduct = photoStore((state) => state.getProduct)
     const token = useAuthStore((state) => state.token)
+    const user = useAuthStore((state)=> state.user)
     const location = useLocation()
     console.log(location.state)
     const navigate = useNavigate()
@@ -49,6 +50,8 @@ function PhotoCategory() {
                     {
 
                         location.state.Photos.map((el) => (
+
+                            
                             <Link to={'/user/photo/' + el.id} >
                                 <img src={el.url} key={el.id}
                                     className="w-full h-auto rounded cursor-pointer hover:scale-105 " />
