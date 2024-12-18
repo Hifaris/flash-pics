@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { UserRound, ShoppingCart, Menu, X } from "lucide-react";
+import { UserRound, ShoppingCart, Menu } from "lucide-react";
 import useAuthStore from "../store/auth-store";
 
 function MainNavbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const actionLogout = useAuthStore((state) => state.actionLogout);
   const navigate = useNavigate();
 
@@ -21,7 +20,7 @@ function MainNavbar() {
   const hdlHome = () => {
     navigate("/user");
   };
-  const hdlphotos = () => {
+  const hdlPhotos = () => {
     navigate("/user/search");
   };
   const hdlCategory = () => {
@@ -48,7 +47,7 @@ function MainNavbar() {
         </a>
         <a
           className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold"
-          onClick={hdlphotos}
+          onClick={hdlPhotos}
         >
           Photos
         </a>
@@ -60,48 +59,62 @@ function MainNavbar() {
         </a>
       </nav>
 
-      {/* Mobile Menu Toggle */}
-      <button
-        className="md:hidden text-gray-700"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {menuOpen ? <X size={30} /> : <Menu size={30} />}
-      </button>
+      {/* Mobile Menu with Hover Dropdown */}
+      <div className="relative md:hidden group">
+        {/* Menu Icon */}
+        <button className="text-gray-700">
+          <Menu size={30} />
+        </button>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <nav className="absolute top-full left-0 w-full bg-white shadow-md flex flex-col items-center space-y-4 p-4 md:hidden z-10">
+        {/* Dropdown Menu */}
+        <nav className="absolute left-0 w-full bg-white shadow-md flex flex-col items-center space-y-4 p-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform translate-y-2 transition-all duration-300 z-10">
+          {/* Navigation Links */}
           <a
             className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold"
-            onClick={() => {
-              setMenuOpen(false);
-              hdlHome();
-            }}
+            onClick={hdlHome}
           >
             Home
           </a>
           <a
             className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold"
-            onClick={() => {
-              setMenuOpen(false);
-              hdlphotos();
-            }}
+            onClick={hdlPhotos}
           >
             Photos
           </a>
           <a
             className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold"
-            onClick={() => {
-              setMenuOpen(false);
-              hdlCategory();
-            }}
+            onClick={hdlCategory}
           >
             Category
           </a>
-        </nav>
-      )}
 
-      {/* Actions */}
+          {/* Profile and Shopping Cart */}
+          <div className="flex space-x-4 mt-4">
+            <UserRound
+              color="#316eaf"
+              size={30}
+              className="cursor-pointer"
+              onClick={hdlProfile}
+            />
+            <ShoppingCart
+              color="#316eaf"
+              size={30}
+              className="cursor-pointer"
+              onClick={hdlCart}
+            />
+          </div>
+
+          {/* Logout Button */}
+          <button
+            className="w-full bg-white border border-orange-500 text-orange-500 rounded-lg px-4 py-2 hover:bg-orange-500 hover:text-white transition mt-2"
+            onClick={hdlLogout}
+          >
+            Logout
+          </button>
+        </nav>
+      </div>
+
+      {/* Desktop Actions */}
       <div className="hidden md:flex space-x-4 items-center">
         <UserRound
           color="#316eaf"
