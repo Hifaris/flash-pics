@@ -28,7 +28,7 @@ function MainNavbar() {
   };
 
   return (
-    <header className="flex items-center justify-between p-4 bg-white shadow-md">
+    <header className="flex items-center justify-between p-4 bg-white shadow-md relative">
       {/* Logo */}
       <div
         className="text-2xl md:text-4xl font-bold text-sky-600 cursor-pointer"
@@ -59,37 +59,36 @@ function MainNavbar() {
         </a>
       </nav>
 
-      {/* Mobile Menu with Hover Dropdown */}
-      <div className="relative md:hidden group">
-        {/* Menu Icon */}
+      {/* Mobile Menu with Dropdown */}
+      <div className="relative md:hidden">
         <button className="text-gray-700">
           <Menu size={30} />
         </button>
 
         {/* Dropdown Menu */}
-        <nav className="absolute left-0 w-full bg-white shadow-md flex flex-col items-center space-y-4 p-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform translate-y-2 transition-all duration-300 z-10">
+        <nav className="absolute top-full right-0 w-48 bg-white shadow-lg flex flex-col items-start p-4 space-y-4 rounded-lg z-10">
           {/* Navigation Links */}
           <a
-            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold"
+            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold w-full text-left"
             onClick={hdlHome}
           >
             Home
           </a>
           <a
-            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold"
+            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold w-full text-left"
             onClick={hdlPhotos}
           >
             Photos
           </a>
           <a
-            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold"
+            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold w-full text-left"
             onClick={hdlCategory}
           >
             Category
           </a>
 
           {/* Profile and Shopping Cart */}
-          <div className="flex space-x-4 mt-4">
+          <div className="flex space-x-4 items-center w-full mt-2">
             <UserRound
               color="#316eaf"
               size={30}
@@ -106,7 +105,7 @@ function MainNavbar() {
 
           {/* Logout Button */}
           <button
-            className="w-full bg-white border border-orange-500 text-orange-500 rounded-lg px-4 py-2 hover:bg-orange-500 hover:text-white transition mt-2"
+            className="w-full bg-orange-500 text-white rounded-lg px-4 py-2 hover:bg-orange-600 transition mt-2"
             onClick={hdlLogout}
           >
             Logout
