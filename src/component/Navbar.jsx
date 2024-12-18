@@ -51,42 +51,50 @@ const Navbar = () => {
         {menuOpen ? <X size={30} /> : <Menu size={30} />}
       </button>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Popup */}
       {menuOpen && (
-        <nav className="absolute top-full left-0 w-full bg-white shadow-md flex flex-col items-center space-y-4 p-4 md:hidden z-10">
-          <a
-            className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold"
-            onClick={() => hdlNavigate("/")}
-          >
-            Home
-          </a>
-          <a
-            className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold"
-            onClick={() => hdlNavigate("/search")}
-          >
-            Photos
-          </a>
-          <a
-            className="text-gray-700 hover:text-sky-800 cursor-pointer font-semibold"
-            onClick={() => hdlNavigate("/categories")}
-          >
-            Collection
-          </a>
-          <div className="space-y-2 mt-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-20 flex items-center justify-center">
+          <nav className="bg-white rounded-lg shadow-lg w-4/5 max-w-md p-6 space-y-4 text-center">
             <button
-              className="text-sky-900 border border-sky-900 rounded-lg px-4 py-2 hover:bg-sky-900 hover:text-white transition w-full"
-              onClick={() => hdlNavigate("/login")}
+              className="absolute top-4 right-4 text-gray-700"
+              onClick={() => setMenuOpen(false)}
             >
-              Login
+              <X size={30} />
             </button>
-            <button
-              className="text-white bg-orange-500 rounded-lg px-4 py-2 hover:bg-orange-600 transition w-full"
-              onClick={() => hdlNavigate("/register")}
+            <a
+              className="block text-gray-700 hover:text-sky-800 cursor-pointer font-semibold"
+              onClick={() => hdlNavigate("/")}
             >
-              Register
-            </button>
-          </div>
-        </nav>
+              Home
+            </a>
+            <a
+              className="block text-gray-700 hover:text-sky-800 cursor-pointer font-semibold"
+              onClick={() => hdlNavigate("/search")}
+            >
+              Photos
+            </a>
+            <a
+              className="block text-gray-700 hover:text-sky-800 cursor-pointer font-semibold"
+              onClick={() => hdlNavigate("/categories")}
+            >
+              Collection
+            </a>
+            <div className="space-y-2 mt-4">
+              <button
+                className="text-sky-900 border border-sky-900 rounded-lg px-4 py-2 hover:bg-sky-900 hover:text-white transition w-full"
+                onClick={() => hdlNavigate("/login")}
+              >
+                Login
+              </button>
+              <button
+                className="text-white bg-orange-500 rounded-lg px-4 py-2 hover:bg-orange-600 transition w-full"
+                onClick={() => hdlNavigate("/register")}
+              >
+                Register
+              </button>
+            </div>
+          </nav>
+        </div>
       )}
 
       {/* Desktop Buttons */}
