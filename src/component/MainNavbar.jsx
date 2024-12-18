@@ -1,9 +1,11 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { UserRound, ShoppingCart, Menu } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/auth-store";
 
 function MainNavbar() {
+  const [menuOpen, setMenuOpen] = useState(false); // For hover dropdown
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // For mobile menu
   const actionLogout = useAuthStore((state) => state.actionLogout);
   const navigate = useNavigate();
 
@@ -59,73 +61,21 @@ function MainNavbar() {
         </a>
       </nav>
 
-      {/* Mobile Menu with Dropdown */}
-      <div className="relative md:hidden">
-        <button className="text-gray-700">
-          <Menu size={30} />
-        </button>
-
-        {/* Dropdown Menu */}
-        <nav className="absolute top-full right-0 w-48 bg-white shadow-lg flex flex-col items-start p-4 space-y-4 rounded-lg z-10">
-          {/* Navigation Links */}
-          <a
-            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold w-full text-left"
-            onClick={hdlHome}
-          >
-            Home
-          </a>
-          <a
-            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold w-full text-left"
-            onClick={hdlPhotos}
-          >
-            Photos
-          </a>
-          <a
-            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold w-full text-left"
-            onClick={hdlCategory}
-          >
-            Category
-          </a>
-
-          {/* Profile and Shopping Cart */}
-          <div className="flex space-x-4 items-center w-full mt-2">
-            <UserRound
-              color="#316eaf"
-              size={30}
-              className="cursor-pointer"
-              onClick={hdlProfile}
-            />
-            <ShoppingCart
-              color="#316eaf"
-              size={30}
-              className="cursor-pointer"
-              onClick={hdlCart}
-            />
-          </div>
-
-          {/* Logout Button */}
-          <button
-            className="w-full bg-orange-500 text-white rounded-lg px-4 py-2 hover:bg-orange-600 transition mt-2"
-            onClick={hdlLogout}
-          >
-            Logout
-          </button>
-        </nav>
-      </div>
-
-      {/* Desktop Actions */}
-      <div className="hidden md:flex space-x-4 items-center">
+      {/* Desktop Actions with Hover Dropdown */}
+      <div
+        className="hidden md:flex space-x-4 items-center relative"
+        onMouseEnter={() => setMenuOpen(true)}
+        onMouseLeave={() => setMenuOpen(false)}
+      >
         <UserRound
           color="#316eaf"
           size={30}
           className="cursor-pointer"
-          onClick={hdlProfile}
         />
         <ShoppingCart
           color="#316eaf"
           size={30}
           className="cursor-pointer"
-          onClick={hdlCart}
         />
         <button
           className="bg-white border border-orange-500 text-orange-500 rounded-lg px-4 py-2 hover:bg-orange-500 hover:text-white transition"
@@ -133,7 +83,72 @@ function MainNavbar() {
         >
           Logout
         </button>
+
+        {/* Hover Dropdown */}
+        {menuOpen && (
+          <nav className="absolute top-full right-0 mt-2 w-48 bg-white shadow-lg flex flex-col items-start p-4 space-y-4 rounded-lg z-10">
+            <button
+              className="w-full text-gray-700 hover:text-sky-600 cursor-pointer text-left font-semibold"
+              onClick={hdlProfile}
+            >
+              Profile
+            </button>
+            <button
+              className="w-full text-gray-700 hover:text-sky-600 cursor-pointer text-left font-semibold"
+              onClick={hdlCart}
+            >
+              Shopping Cart
+            </button>
+            <button
+              className="w-full bg-orange-500 text-white rounded-lg px-4 py-2 hover:bg-orange-600 transition text-left"
+              onClick={hdlLogout}
+            >
+              Logout
+            </button>
+          </nav>
+        )}
       </div>
+
+      {/* Mobile Menu Toggle */}
+      <button
+        className="md:hidden text-gray-700"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+      >
+        <Menu size={30} />
+      </button>
+
+      {/* Mobile Dropdown Menu */}
+      {mobileMenuOpen && (
+        <nav className="absolute top-full left-0 w-full bg-white shadow-md flex flex-col items-center space-y-4 p-4 md:hidden z-10">
+          <a
+            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              hdlHome();
+            }}
+          >
+            Home
+          </a>
+          <a
+            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              hdlPhotos();
+            }}
+          >
+            Photos
+          </a>
+          <a
+            className="text-gray-700 hover:text-sky-600 cursor-pointer font-semibold"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              hdlCategory();
+            }}
+          >
+            Category
+          </a>
+        </nav>
+      )}
     </header>
   );
 }
