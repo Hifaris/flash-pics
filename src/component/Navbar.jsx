@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const hdlNavigate = (path) => {
-    setMenuOpen(false);
     navigate(path);
   };
 
@@ -43,59 +41,49 @@ const Navbar = () => {
         </a>
       </nav>
 
-      {/* Mobile Menu Toggle */}
-      <button
-        className="md:hidden text-gray-700"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {menuOpen ? <X size={30} /> : <Menu size={30} />}
-      </button>
+      {/* Mobile Menu with Dropdown */}
+      <div className="relative md:hidden group">
+        {/* Menu Button */}
+        <button className="text-gray-700">
+          <Menu size={30} />
+        </button>
 
-      {/* Mobile Menu Popup */}
-      {menuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-20 flex items-center justify-center">
-          <nav className="bg-white rounded-lg shadow-lg w-4/5 max-w-md p-6 space-y-4 text-center">
+        {/* Dropdown Menu */}
+        <nav className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-48 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform translate-y-2 transition-all duration-300 z-10">
+          <a
+            className="block px-4 py-2 text-gray-700 hover:text-sky-800 hover:bg-gray-100 font-semibold cursor-pointer"
+            onClick={() => hdlNavigate("/")}
+          >
+            Home
+          </a>
+          <a
+            className="block px-4 py-2 text-gray-700 hover:text-sky-800 hover:bg-gray-100 font-semibold cursor-pointer"
+            onClick={() => hdlNavigate("/search")}
+          >
+            Photos
+          </a>
+          <a
+            className="block px-4 py-2 text-gray-700 hover:text-sky-800 hover:bg-gray-100 font-semibold cursor-pointer"
+            onClick={() => hdlNavigate("/categories")}
+          >
+            Collection
+          </a>
+          <div className="px-4 py-2">
             <button
-              className="absolute top-4 right-4 text-gray-700"
-              onClick={() => setMenuOpen(false)}
+              className="w-full text-sky-900 border border-sky-900 rounded-lg px-4 py-2 hover:bg-sky-900 hover:text-white transition"
+              onClick={() => hdlNavigate("/login")}
             >
-              <X size={30} />
+              Login
             </button>
-            <a
-              className="block text-gray-700 hover:text-sky-800 cursor-pointer font-semibold"
-              onClick={() => hdlNavigate("/")}
+            <button
+              className="w-full text-white bg-orange-500 rounded-lg px-4 py-2 mt-2 hover:bg-orange-600 transition"
+              onClick={() => hdlNavigate("/register")}
             >
-              Home
-            </a>
-            <a
-              className="block text-gray-700 hover:text-sky-800 cursor-pointer font-semibold"
-              onClick={() => hdlNavigate("/search")}
-            >
-              Photos
-            </a>
-            <a
-              className="block text-gray-700 hover:text-sky-800 cursor-pointer font-semibold"
-              onClick={() => hdlNavigate("/categories")}
-            >
-              Collection
-            </a>
-            <div className="space-y-2 mt-4">
-              <button
-                className="text-sky-900 border border-sky-900 rounded-lg px-4 py-2 hover:bg-sky-900 hover:text-white transition w-full"
-                onClick={() => hdlNavigate("/login")}
-              >
-                Login
-              </button>
-              <button
-                className="text-white bg-orange-500 rounded-lg px-4 py-2 hover:bg-orange-600 transition w-full"
-                onClick={() => hdlNavigate("/register")}
-              >
-                Register
-              </button>
-            </div>
-          </nav>
-        </div>
-      )}
+              Register
+            </button>
+          </div>
+        </nav>
+      </div>
 
       {/* Desktop Buttons */}
       <div className="hidden md:flex space-x-4">
