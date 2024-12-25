@@ -22,7 +22,7 @@ const ImageShow = () => {
   }, [currentPage]);
 
   const hdlClick = (item) => {
-    user?.role ? navigate(`/user/photo/${item.id}`) : navigate(`/photo/${item.id}`);
+    user?.role ? navigate(`/user/photo/${item}`) : navigate(`/photo/${item}`);
   };
 
   const handlePageChange = (page) => {
