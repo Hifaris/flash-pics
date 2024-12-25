@@ -28,6 +28,7 @@ export const readPhoto = async(id)=> axios.delete(`/photo/get/${id}`,{
         Authorization: `Bearer ${token}`
     }
 })
-export const readPhotoDetail = async(id)=> axios.get(`/photo/getphotodetail/${id}`)
+export const readPhotoDetail = (id) => 
+    axios.get(`/photo/getphotodetail/${id}`);
 
 export const searchByTitle = async(text)=> await axios.post('/photo/search',text)

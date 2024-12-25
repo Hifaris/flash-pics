@@ -18,9 +18,14 @@ const ImageShow = () => {
 
   useEffect(() => {
     getProduct(currentPage);
-  }, [currentPage]);
+  }, [currentPage, getProduct]);
 
   const hdlClick = (photoId) => {
+    if (!photoId) {
+      console.error("Photo ID is undefined", photoId);
+      return;
+    }
+    console.log("Navigating to photo:", photoId);
     const path = user?.role ? `/user/photo/${photoId}` : `/photo/${photoId}`;
     navigate(path);
   };
