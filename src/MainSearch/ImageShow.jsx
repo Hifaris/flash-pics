@@ -12,7 +12,6 @@ const ImageShow = () => {
   const products = photoStore((state) => state.products);
   const navigate = useNavigate();
 
-  // Track pagination state locally
   const [currentPage, setCurrentPage] = React.useState(1);
   const pageSize = 16;
   const totalPhotos = products?.length || 0;
@@ -21,8 +20,9 @@ const ImageShow = () => {
     getProduct(currentPage);
   }, [currentPage]);
 
-  const hdlClick = (item) => {
-    user?.role ? navigate(`/user/photo/${item}`) : navigate(`/photo/${item}`);
+  const hdlClick = (photoId) => {
+    const path = user?.role ? `/user/photo/${photoId}` : `/photo/${photoId}`;
+    navigate(path);
   };
 
   const handlePageChange = (page) => {
