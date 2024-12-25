@@ -14,16 +14,16 @@ const ImageShow = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getProduct(1); // Get first page on initial load
+    getProduct(1); // Get first page
   }, []);
 
   const hdlClick = (item) => {
     user?.role ? navigate(`/user/photo/${item.id}`) : navigate(`/photo/${item.id}`);
   };
 
-  const handlePageChange = (page, pageSize) => {
+  const handlePageChange = (page) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    getProduct(page, pageSize);
+    getProduct(page);
   };
 
   return (
@@ -33,8 +33,8 @@ const ImageShow = () => {
           <Loading />
         ) : (
           <>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8 mt-5">
-              {products?.map((el) => (
+            <div className="grid grid-cols-4 gap-4 mb-8 mt-5">
+              {products?.slice(0, 16).map((el) => ( // Ensure only 16 photos are shown
                 <div key={el.id} className="aspect-w-1 aspect-h-1">
                   <Watermark content="Copy by Flash Pics" font={{ fontSize: 16 }}>
                     <img
@@ -52,7 +52,7 @@ const ImageShow = () => {
               <Pagination
                 current={pagination.page}
                 total={pagination.total}
-                pageSize={pagination.pageSize}
+                pageSize={16} // Fixed page size
                 onChange={handlePageChange}
                 showSizeChanger={false}
                 className="mb-8"
