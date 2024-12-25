@@ -37,6 +37,7 @@ const ImageShow = () => {
 
   const startIndex = (currentPage - 1) * pageSize;
   const currentPhotos = products?.slice(startIndex, startIndex + pageSize);
+  console.log(currentPhotos)
 
   return (
     <div>
