@@ -8,17 +8,17 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      localStorage.clear(); // Clear local storage on page unload
-    };
+  // useEffect(() => {
+  //   const handleBeforeUnload = () => {
+  //     localStorage.clear(); // Clear local storage on page unload
+  //   };
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
+  //   window.addEventListener('beforeunload', handleBeforeUnload);
 
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('beforeunload', handleBeforeUnload);
+  //   };
+  // }, []);
 
   return (
     <div>
