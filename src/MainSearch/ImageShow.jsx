@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Watermark, Pagination } from "antd";
 import Loading from "../component/Loading";
@@ -10,26 +10,14 @@ const ImageShow = () => {
   const user = useAuthStore((state) => state.user);
   const loading = photoStore((state) => state.loading);
   const products = photoStore((state) => state.products);
+  const pagination = photoStore((state) => state.pagination);
   const navigate = useNavigate();
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 16;
-  const totalPhotos = products?.length || 0;
-
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const result = await getProduct(currentPage);
-        console.log("Raw API response:", result); // Add this log
-      } catch (err) {
-        console.error("Error fetching products:", err);
-      }
-    };
-    fetchProducts();
-  }, [currentPage]);
+    getProduct(pagination.page);
+  }, [pagination.page]);
 
   const hdlClick = (el) => {
-    console.log("Clicked photo:", el); // Add this log
     if (!el) {
       console.error("Photo data is undefined");
       return;
@@ -38,13 +26,9 @@ const ImageShow = () => {
   };
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    getProduct(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  const startIndex = (currentPage - 1) * pageSize;
-  const currentPhotos = products?.slice(startIndex, startIndex + pageSize);
-  console.log(currentPhotos)
 
   return (
     <div>
@@ -54,7 +38,7 @@ const ImageShow = () => {
         ) : (
           <>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 mt-5">
-              {currentPhotos?.map((el) => (
+              {products?.map((el) => (
                 <div key={el.id} className="aspect-w-1 aspect-h-1">
                   <Watermark content="Copy by Flash Pics" font={{ fontSize: 16 }}>
                     <img
@@ -68,18 +52,16 @@ const ImageShow = () => {
               ))}
             </div>
 
-            {totalPhotos > pageSize && (
-              <div className="flex justify-center mt-6">
-                <Pagination
-                  current={currentPage}
-                  total={totalPhotos}
-                  pageSize={pageSize}
-                  onChange={handlePageChange}
-                  showSizeChanger={false}
-                  className="mb-8"
-                />
-              </div>
-            )}
+            <div className="flex justify-center mt-6">
+              <Pagination
+                current={pagination.page}
+                total={pagination.total}
+                pageSize={pagination.pageSize}
+                onChange={handlePageChange}
+                showSizeChanger={false}
+                className="mb-8"
+              />
+            </div>
           </>
         )}
       </div>

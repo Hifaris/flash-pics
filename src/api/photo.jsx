@@ -8,10 +8,12 @@ export const createPhoto = async(token,form)=> axios.post("/photo",form,{
 })
 export const listPhoto = async (page = 1) => {
     return axios.get(`/photo/list`, {
-        params: { page }
+        params: { 
+            page,
+            pageSize: 16  // Add pageSize parameter
+        }
     });
 };
-
 export const allPhoto = async(text)=> axios.get("/photo",text)
 export const editPhotoDetail = async(token,id,form)=> axios.patch(`/photo/${id}`,form,{
     headers:{
