@@ -10,21 +10,28 @@ const ImageShow = () => {
   const user = useAuthStore((state) => state.user);
   const loading = photoStore((state) => state.loading);
   const products = photoStore((state) => state.products);
-  const pagination = photoStore((state) => state.pagination);
   const navigate = useNavigate();
 
+  // Track pagination state locally
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const pageSize = 16;
+  const totalPhotos = products?.length || 0;
+
   useEffect(() => {
-    getProduct(1); // Get first page
-  }, []);
+    getProduct(currentPage);
+  }, [currentPage]);
 
   const hdlClick = (item) => {
     user?.role ? navigate(`/user/photo/${item.id}`) : navigate(`/photo/${item.id}`);
   };
 
   const handlePageChange = (page) => {
+    setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    getProduct(page);
   };
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const currentPhotos = products?.slice(startIndex, startIndex + pageSize);
 
   return (
     <div>
@@ -33,8 +40,8 @@ const ImageShow = () => {
           <Loading />
         ) : (
           <>
-            <div className="grid grid-cols-4 gap-4 mb-8 mt-5">
-              {products?.slice(0, 16).map((el) => ( // Ensure only 16 photos are shown
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 mt-5">
+              {currentPhotos?.map((el) => (
                 <div key={el.id} className="aspect-w-1 aspect-h-1">
                   <Watermark content="Copy by Flash Pics" font={{ fontSize: 16 }}>
                     <img
@@ -48,16 +55,18 @@ const ImageShow = () => {
               ))}
             </div>
 
-            <div className="flex justify-center mt-6">
-              <Pagination
-                current={pagination.page}
-                total={pagination.total}
-                pageSize={16} // Fixed page size
-                onChange={handlePageChange}
-                showSizeChanger={false}
-                className="mb-8"
-              />
-            </div>
+            {totalPhotos > pageSize && (
+              <div className="flex justify-center mt-6">
+                <Pagination
+                  current={currentPage}
+                  total={totalPhotos}
+                  pageSize={pageSize}
+                  onChange={handlePageChange}
+                  showSizeChanger={false}
+                  className="mb-8"
+                />
+              </div>
+            )}
           </>
         )}
       </div>
