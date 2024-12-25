@@ -6,7 +6,11 @@ export const createPhoto = async(token,form)=> axios.post("/photo",form,{
         Authorization: `Bearer ${token}`
     }
 })
-export const listPhoto = async(count)=> axios.get(`/photo/${count}`)
+export const listPhoto = async (page = 1, pageSize = 16) => {
+    return axios.get(`${PATH}/photo`, {
+        params: { page, pageSize }
+    });
+};
 
 export const allPhoto = async(text)=> axios.get("/photo",text)
 export const editPhotoDetail = async(token,id,form)=> axios.patch(`/photo/${id}`,form,{
