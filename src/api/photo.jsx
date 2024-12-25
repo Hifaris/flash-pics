@@ -7,7 +7,7 @@ export const createPhoto = async(token,form)=> axios.post("/photo",form,{
     }
 })
 export const listPhoto = async (page = 1) => {
-    return axios.get(`${PATH}/photo/list`, {
+    return axios.get(`/photo/list`, {
         params: { page }
     });
 };
