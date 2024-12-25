@@ -48,7 +48,7 @@ const ImageShow = () => {
                       src={el.url}
                       alt="Photo"
                       className="w-full h-64 object-cover rounded cursor-pointer hover:scale-105 transition-transform duration-300"
-                      onClick={() => hdlClick(el)}
+                      onClick={() => hdlClick(el.id)}
                     />
                   </Watermark>
                 </div>
