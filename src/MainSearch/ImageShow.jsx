@@ -12,22 +12,29 @@ const ImageShow = () => {
   const products = photoStore((state) => state.products);
   const navigate = useNavigate();
 
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 16;
   const totalPhotos = products?.length || 0;
 
   useEffect(() => {
-    getProduct(currentPage);
-  }, [currentPage, getProduct]);
+    const fetchProducts = async () => {
+      try {
+        const result = await getProduct(currentPage);
+        console.log("Raw API response:", result); // Add this log
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      }
+    };
+    fetchProducts();
+  }, [currentPage]);
 
-  const hdlClick = (photoId) => {
-    if (!photoId) {
-      console.error("Photo ID is undefined", photoId);
+  const hdlClick = (el) => {
+    console.log("Clicked photo:", el); // Add this log
+    if (!el) {
+      console.error("Photo data is undefined");
       return;
     }
-    console.log("Navigating to photo:", photoId);
-    const path = user?.role ? `/user/photo/${photoId}` : `/photo/${photoId}`;
-    navigate(path);
+    user?.role ? navigate(`/user/photo/${el.id}`) : navigate(`/photo/${el.id}`);
   };
 
   const handlePageChange = (page) => {
@@ -54,7 +61,7 @@ const ImageShow = () => {
                       src={el.url}
                       alt="Photo"
                       className="w-full h-64 object-cover rounded cursor-pointer hover:scale-105 transition-transform duration-300"
-                      onClick={() => hdlClick(el.id)}
+                      onClick={() => hdlClick(el)}
                     />
                   </Watermark>
                 </div>

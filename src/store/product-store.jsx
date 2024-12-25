@@ -14,17 +14,20 @@ const photoStore = create((set) => ({
     getProduct: async (page = 1, pageSize = 16) => {
         set({ loading: true });
         try {
-            const resp = await listPhoto(page, pageSize);
-            set({ 
-                products: resp.data.photos,
-                pagination: resp.data.pagination,
-                loading: false 
-            });
+          const resp = await listPhoto(page, pageSize);
+          console.log("API Response:", resp.data); // Add this log
+          set({ 
+            products: resp.data.photos,
+            pagination: resp.data.pagination,
+            loading: false 
+          });
+          return resp; // Return the response
         } catch (err) {
-            console.log(err);
-            set({ loading: false });
+          console.log(err);
+          set({ loading: false });
+          throw err;
         }
-    },
+      },
 
     allPhotos: async () => {
         set({ loading: true });
