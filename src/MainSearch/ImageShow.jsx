@@ -26,13 +26,17 @@ const ImageShow = () => {
   };
 
   const handlePageChange = (page) => {
-    const { query } = photoStore.getState().pagination; // Add query state
+    const currentState = photoStore.getState(); // Get current state
+    const { query } = currentState.pagination;
+
     if (query) {
-        searchPhoto({ query, page });
+        // If a query exists, perform a search with the new page number
+        photoStore.getState().searchPhoto({ query, page });
     } else {
+        // Otherwise, fetch all products for the new page number
         getProduct(page);
     }
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
   return (

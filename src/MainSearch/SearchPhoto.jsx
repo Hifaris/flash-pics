@@ -13,13 +13,16 @@ const SearchPhoto = () => {
             console.log("Searching for:", text);
             await searchPhoto({ query: text });
         } else {
-            console.log("Loading all photos");
-            await allPhoto();
+            console.log("Loading paginated photos");
+            // Call getProduct with the current page from the state
+            const currentPage = photoStore.getState().pagination.page || 1;
+            await photoStore.getState().getProduct(currentPage);
         }
     } catch (error) {
         console.error("Search Error:", error);
     }
 };
+
 
   return (
     <div className="flex justify-center mt-8">

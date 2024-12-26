@@ -41,19 +41,20 @@ const photoStore = create((set) => ({
         }
     },
   
-    searchPhoto: async ({ query, page = 1 }) => {
-        const currentState = photoStore.getState(); // Get the current state
-        const { pageSize } = currentState.pagination; // Access the pageSize from pagination
+    searchPhoto: async ({ query }) => {
+        const currentState = photoStore.getState(); // Get current state
+        const { pageSize } = currentState.pagination;
     
         set({ loading: true });
         try {
-            const resp = await searchByTitle({ query, page });
+            // Always start from page 1 when searching
+            const resp = await searchByTitle({ query, page: 1 });
             set({
                 products: resp.data.photos || resp.data,
                 pagination: {
-                    ...currentState.pagination, // Spread the existing pagination state
-                    page,
-                    query, // Save the search query
+                    ...currentState.pagination,
+                    page: 1, // Reset to page 1 for search
+                    query,
                     total: resp.data.total || resp.data.length,
                     totalPages: Math.ceil((resp.data.total || resp.data.length) / pageSize),
                 },
@@ -64,6 +65,7 @@ const photoStore = create((set) => ({
             set({ loading: false });
         }
     }
+    
     
     
 }));
