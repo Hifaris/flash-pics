@@ -4,12 +4,12 @@ import { allPhoto, listPhoto, searchByTitle } from "../api/photo";
 const photoStore = create((set) => ({
     products: [],
     loading: false,
+    searchQuery: "", // Track the search query
     pagination: {
         page: 1,
         pageSize: 16,
         total: 0,
         totalPages: 0,
-        query: "", 
     },
     
     getProduct: async (page = 1, pageSize = 16) => {
@@ -41,30 +41,21 @@ const photoStore = create((set) => ({
         }
     },
   
-    searchPhoto: async ({ query }) => {
-        const currentState = photoStore.getState(); // Get current state
-        const { pageSize } = currentState.pagination;
-    
-        set({ loading: true });
+    searchPhoto: async ({ query, page = 1, pageSize = 16 }) => {
+        set({ loading: true, searchQuery: query }); // Save the query
         try {
-            // Always start from page 1 when searching
-            const resp = await searchByTitle({ query, page: 1 });
+            const resp = await searchByTitle({ query, page, pageSize });
             set({
-                products: resp.data.photos || resp.data,
-                pagination: {
-                    ...currentState.pagination,
-                    page: 1, // Reset to page 1 for search
-                    query,
-                    total: resp.data.total || resp.data.length,
-                    totalPages: Math.ceil((resp.data.total || resp.data.length) / pageSize),
-                },
+                products: resp.data.photos,
+                pagination: resp.data.pagination,
                 loading: false,
             });
         } catch (err) {
-            console.error(err);
+            console.log(err);
             set({ loading: false });
         }
-    }
+    },
+    
     
     
     

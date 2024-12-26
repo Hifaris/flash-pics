@@ -9,19 +9,19 @@ const SearchPhoto = () => {
 
   const handleSearch = async () => {
     try {
+        const currentPage = photoStore.getState().pagination.page || 1;
         if (text.trim()) {
             console.log("Searching for:", text);
-            await searchPhoto({ query: text });
+            await searchPhoto({ query: text, page: currentPage });
         } else {
             console.log("Loading paginated photos");
-            // Call getProduct with the current page from the state
-            const currentPage = photoStore.getState().pagination.page || 1;
             await photoStore.getState().getProduct(currentPage);
         }
     } catch (error) {
         console.error("Search Error:", error);
     }
 };
+
 
 
   return (

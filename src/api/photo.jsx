@@ -33,4 +33,5 @@ export const readPhoto = async(id)=> axios.delete(`/photo/get/${id}`,{
 export const readPhotoDetail = (id) => 
     axios.get(`/photo/getphotodetail/${id}`);
 
-export const searchByTitle = async(text)=> await axios.post('/photo/search',text)
+export const searchByTitle = async ({ query, page = 1, pageSize = 16 }) =>
+    await axios.post('/photo/search', { query }, { params: { page, pageSize } });
