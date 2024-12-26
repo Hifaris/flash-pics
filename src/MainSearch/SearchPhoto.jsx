@@ -9,17 +9,17 @@ const SearchPhoto = () => {
 
   const handleSearch = async () => {
     try {
-      if (text.trim()) {
-        console.log("Searching for:", text);
-        await searchPhoto({ query: text });
-      } else {
-        console.log("Loading all photos");
-        await allPhoto();
-      }
+        if (text.trim()) {
+            console.log("Searching for:", text);
+            await searchPhoto({ query: text });
+        } else {
+            console.log("Loading all photos");
+            await allPhoto();
+        }
     } catch (error) {
-      console.error("Search Error:", error);
+        console.error("Search Error:", error);
     }
-  };
+};
 
   return (
     <div className="flex justify-center mt-8">

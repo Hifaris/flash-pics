@@ -26,9 +26,14 @@ const ImageShow = () => {
   };
 
   const handlePageChange = (page) => {
-    getProduct(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+    const { query } = photoStore.getState().pagination; // Add query state
+    if (query) {
+        searchPhoto({ query, page });
+    } else {
+        getProduct(page);
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
   return (
     <div>
