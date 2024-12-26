@@ -7,6 +7,7 @@ import useAuthStore from "../store/auth-store";
 
 const ImageShow = () => {
   const getProduct = photoStore((state) => state.getProduct);
+  const searchPhoto = photoStore((state) => state.searchPhoto)
   const user = useAuthStore((state) => state.user);
   const loading = photoStore((state) => state.loading);
   const products = photoStore((state) => state.products);
